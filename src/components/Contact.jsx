@@ -1,13 +1,44 @@
 import { useState } from 'react';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
 
 export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // UI only simulation
-    setIsSubmitted(true);
+    setIsLoading(true);
+    setError(null);
+
+    const formData = new FormData(e.target);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      brand: formData.get('brand'),
+      service: formData.get('service'),
+      message: formData.get('message')
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message. Please try again.');
+      }
+
+      setIsSubmitted(true);
+    } catch (err) {
+      setError(err.message || 'Something went wrong.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -38,25 +69,32 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                {error && (
+                  <div className="flex items-center gap-2 text-red-600 bg-red-50 p-3 rounded-md text-sm font-body border border-red-200">
+                    <AlertCircle className="w-4 h-4 shrink-0" />
+                    <span>{error}</span>
+                  </div>
+                )}
+                
                 <div>
                   <label className="block font-display font-medium text-obsidian text-sm mb-1.5" htmlFor="name">Name</label>
-                  <input required type="text" id="name" className="w-full bg-mist border border-mint/50 rounded-md px-4 py-3 text-obsidian font-body text-[15px] focus:outline-none focus:border-emerald transition-colors" placeholder="Jane Doe" />
+                  <input required type="text" name="name" id="name" className="w-full bg-mist border border-mint/50 rounded-md px-4 py-3 text-obsidian font-body text-[15px] focus:outline-none focus:border-emerald transition-colors" placeholder="Jane Doe" disabled={isLoading} />
                 </div>
                 
                 <div>
                   <label className="block font-display font-medium text-obsidian text-sm mb-1.5" htmlFor="email">Email</label>
-                  <input required type="email" id="email" className="w-full bg-mist border border-mint/50 rounded-md px-4 py-3 text-obsidian font-body text-[15px] focus:outline-none focus:border-emerald transition-colors" placeholder="jane@brand.com" />
+                  <input required type="email" name="email" id="email" className="w-full bg-mist border border-mint/50 rounded-md px-4 py-3 text-obsidian font-body text-[15px] focus:outline-none focus:border-emerald transition-colors" placeholder="jane@brand.com" disabled={isLoading} />
                 </div>
                 
                 <div>
                   <label className="block font-display font-medium text-obsidian text-sm mb-1.5" htmlFor="brand">Brand/Company</label>
-                  <input required type="text" id="brand" className="w-full bg-mist border border-mint/50 rounded-md px-4 py-3 text-obsidian font-body text-[15px] focus:outline-none focus:border-emerald transition-colors" placeholder="Brand Name" />
+                  <input required type="text" name="brand" id="brand" className="w-full bg-mist border border-mint/50 rounded-md px-4 py-3 text-obsidian font-body text-[15px] focus:outline-none focus:border-emerald transition-colors" placeholder="Brand Name" disabled={isLoading} />
                 </div>
                 
                 <div>
                   <label className="block font-display font-medium text-obsidian text-sm mb-1.5" htmlFor="service">Service Interest</label>
-                  <select required id="service" className="w-full bg-mist border border-mint/50 rounded-md px-4 py-3 text-obsidian font-body text-[15px] focus:outline-none focus:border-emerald transition-colors appearance-none cursor-pointer">
-                    <option value="" disabled selected>Select a service</option>
+                  <select required name="service" id="service" defaultValue="" className="w-full bg-mist border border-mint/50 rounded-md px-4 py-3 text-obsidian font-body text-[15px] focus:outline-none focus:border-emerald transition-colors appearance-none cursor-pointer" disabled={isLoading}>
+                    <option value="" disabled>Select a service</option>
                     <option value="social">Social Media</option>
                     <option value="web">Web Design</option>
                     <option value="brand">Brand Identity</option>
@@ -66,11 +104,18 @@ export default function Contact() {
                 
                 <div>
                   <label className="block font-display font-medium text-obsidian text-sm mb-1.5" htmlFor="message">Brief message</label>
-                  <textarea required id="message" rows={4} className="w-full bg-mist border border-mint/50 rounded-md px-4 py-3 text-obsidian font-body text-[15px] focus:outline-none focus:border-emerald transition-colors resize-none" placeholder="Tell us about your goals..."></textarea>
+                  <textarea required name="message" id="message" rows={4} className="w-full bg-mist border border-mint/50 rounded-md px-4 py-3 text-obsidian font-body text-[15px] focus:outline-none focus:border-emerald transition-colors resize-none" placeholder="Tell us about your goals..." disabled={isLoading}></textarea>
                 </div>
                 
-                <button type="submit" className="btn-primary mt-2">
-                  Send Message
+                <button type="submit" className="btn-primary mt-2 flex items-center justify-center gap-2" disabled={isLoading}>
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    'Send Message'
+                  )}
                 </button>
               </form>
             )}

@@ -1,4 +1,4 @@
-import { Link } from 'react-scroll';
+import { Link } from 'react-router-dom';
 import { Hexagon } from 'lucide-react';
 
 const InstagramIcon = ({ size }) => (
@@ -31,10 +31,10 @@ export default function Footer() {
           
           {/* Col 1 - Brand */}
           <div className="flex flex-col gap-6">
-            <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({top:0, behavior:'smooth'})}>
+            <Link to="/" className="flex items-center gap-2 cursor-pointer">
               <img src="/logo.png" alt="Prismbee Logo" className="w-8 h-8 object-contain" />
               <span className="font-display font-bold text-white text-xl tracking-tight">Prismbee</span>
-            </div>
+            </Link>
             <p className="font-body text-slate-300 text-[15px]">
               Scale Smarter. Grow Faster.
             </p>
@@ -55,18 +55,18 @@ export default function Footer() {
           {/* Col 2 - Services */}
           <div className="flex flex-col gap-4">
             <h4 className="font-display font-semibold text-white mb-2">Services</h4>
-            <a href="#" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors">Social Media Management</a>
-            <a href="#" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors">Web Design & Development</a>
-            <a href="#" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors">Brand Identity</a>
+            <Link to="/services" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors">Social Media Management</Link>
+            <Link to="/services" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors">Web Design & Development</Link>
+            <Link to="/services" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors">Brand Identity</Link>
           </div>
 
           {/* Col 3 - Company */}
           <div className="flex flex-col gap-4">
             <h4 className="font-display font-semibold text-white mb-2">Company</h4>
-            <a href="#" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors">About</a>
-            <Link to="how-it-works" smooth={true} duration={800} offset={-80} className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors cursor-pointer">Process</Link>
-            <Link to="packages" smooth={true} duration={800} offset={-80} className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors cursor-pointer">Packages</Link>
-            <Link to="contact" smooth={true} duration={800} offset={-80} className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors cursor-pointer">Contact</Link>
+            <Link to="/why-prismbee" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors">About</Link>
+            <Link to="/how-it-works" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors cursor-pointer">Process</Link>
+            <Link to="/packages" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors cursor-pointer">Packages</Link>
+            <Link to="/contact" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors cursor-pointer">Contact</Link>
           </div>
 
           {/* Col 4 - Contact */}
@@ -75,7 +75,7 @@ export default function Footer() {
             <a href="mailto:hello@prismbee.com" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors mb-4">
               hello@prismbee.com
             </a>
-            <Link to="contact" smooth={true} duration={800} offset={-80}>
+            <Link to="/contact">
               <button className="btn-primary w-full text-center">
                 Get a Free Strategy Call
               </button>
