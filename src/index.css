@@ -162,6 +162,20 @@
   opacity: 0.75;
 }
 
+/* Page Transition Overlay (Huge Inc style) */
+#page-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  z-index: 9999;
+  transform: translateY(100%);
+  will-change: transform;
+  pointer-events: none;
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -173,7 +187,7 @@
   .animate-marquee-infinite {
     animation: none !important;
   }
-  .custom-cursor {
+  .custom-cursor, #page-transition-overlay {
     display: none !important;
   }
 }
@@ -183,3 +197,4 @@
     display: none !important;
   }
 }
+
