@@ -1,99 +1,150 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Hexagon } from 'lucide-react';
-
-const InstagramIcon = ({ size }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-  </svg>
-);
-
-const LinkedinIcon = ({ size }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-    <rect width="4" height="12" x="2" y="9"/>
-    <circle cx="4" cy="4" r="2"/>
-  </svg>
-);
-
-const TwitterIcon = ({ size }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
-  </svg>
-);
 
 export default function Footer() {
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (email) {
+      setIsSubscribed(true);
+    }
+  };
+
   return (
-    <footer className="bg-obsidian pt-20 pb-8 text-white border-t border-mint/10">
-      <div className="container mx-auto px-6 max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          
-          {/* Col 1 - Brand */}
-          <div className="flex flex-col gap-6">
-            <Link to="/" className="flex items-center gap-2 cursor-pointer">
-              <img src="/logo.png" alt="Prismbee Logo" className="w-8 h-8 object-contain" />
-              <span className="font-display font-bold text-white text-xl tracking-tight">Prismbee</span>
-            </Link>
-            <p className="font-body text-slate-300 text-[15px]">
-              Scale Smarter. Grow Faster.
-            </p>
-            <div className="flex gap-4">
-              <a href="#" aria-label="Instagram" className="text-white hover:text-mint transition-colors">
-                <InstagramIcon size={20} />
-              </a>
-              <a href="#" aria-label="LinkedIn" className="text-white hover:text-mint transition-colors">
-                <LinkedinIcon size={20} />
-              </a>
-              {/* TikTok icon approximation or custom SVG. Using a generic play/video for now if not available, or X for twitter */}
-              <a href="#" aria-label="X (Twitter)" className="text-white hover:text-mint transition-colors">
-                <TwitterIcon size={20} />
-              </a>
-            </div>
-          </div>
-
-          {/* Col 2 - Services */}
-          <div className="flex flex-col gap-4">
-            <h4 className="font-display font-semibold text-white mb-2">Services</h4>
-            <Link to="/services" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors">Social Media Management</Link>
-            <Link to="/services" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors">Web Design & Development</Link>
-            <Link to="/services" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors">Brand Identity</Link>
-          </div>
-
-          {/* Col 3 - Company */}
-          <div className="flex flex-col gap-4">
-            <h4 className="font-display font-semibold text-white mb-2">Company</h4>
-            <Link to="/why-prismbee" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors">About</Link>
-            <Link to="/how-it-works" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors cursor-pointer">Process</Link>
-            <Link to="/packages" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors cursor-pointer">Packages</Link>
-            <Link to="/contact" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors cursor-pointer">Contact</Link>
-          </div>
-
-          {/* Col 4 - Contact */}
-          <div className="flex flex-col gap-4">
-            <h4 className="font-display font-semibold text-white mb-2">Contact</h4>
-            <a href="mailto:hello@prismbee.com" className="font-body text-slate-300 text-[14px] hover:text-mint transition-colors mb-4">
-              hello@prismbee.com
-            </a>
-            <Link to="/contact">
-              <button className="btn-primary w-full text-center">
-                Get a Free Strategy Call
-              </button>
-            </Link>
-          </div>
-
+    <footer className="w-full bg-[#064E3B] text-white pt-20 md:pt-32 pb-10 px-6 md:px-12">
+      <div className="max-w-[1600px] mx-auto flex flex-col gap-16 md:gap-24">
+        {/* Giant "Done." display statement (Huge Inc signature) */}
+        <div>
+          <h2 className="text-[clamp(4.5rem,15vw,13rem)] font-extrabold tracking-[-0.045em] leading-[0.82] select-none text-white m-0 p-0">
+            Done<span className="text-[#10B981]">.</span>
+          </h2>
         </div>
 
-        {/* Divider */}
-        <div className="h-px w-full bg-mint/20 mb-8"></div>
+        {/* Middle Section: 2 Columns (Left: Nav, Right: Newsletter & Social) */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start">
+          {/* Left: Nav Pages with Period Suffixes */}
+          <div className="md:col-span-5 lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <nav aria-label="Footer primary navigation" className="flex flex-col gap-4">
+              <Link
+                to="/work"
+                className="text-2xl sm:text-3xl font-bold tracking-tight text-white hover:text-[#A7F3D0] transition-colors w-fit"
+              >
+                Work.
+              </Link>
+              <Link
+                to="/services"
+                className="text-2xl sm:text-3xl font-bold tracking-tight text-white hover:text-[#A7F3D0] transition-colors w-fit"
+              >
+                Solutions.
+              </Link>
+              <Link
+                to="/how-it-works"
+                className="text-2xl sm:text-3xl font-bold tracking-tight text-white hover:text-[#A7F3D0] transition-colors w-fit"
+              >
+                Approach.
+              </Link>
+              <Link
+                to="/why-prismbee"
+                className="text-2xl sm:text-3xl font-bold tracking-tight text-white hover:text-[#A7F3D0] transition-colors w-fit"
+              >
+                Company.
+              </Link>
+              <Link
+                to="/packages"
+                className="text-2xl sm:text-3xl font-bold tracking-tight text-white hover:text-[#A7F3D0] transition-colors w-fit"
+              >
+                Pricing.
+              </Link>
+            </nav>
+
+            <nav aria-label="Footer secondary navigation" className="flex flex-col gap-4 pt-1 sm:pt-0">
+              <Link
+                to="/contact"
+                className="text-lg font-medium tracking-tight text-white/80 hover:text-white transition-colors w-fit"
+              >
+                Join us.
+              </Link>
+              <Link
+                to="/contact"
+                className="text-lg font-medium tracking-tight text-white/80 hover:text-white transition-colors w-fit"
+              >
+                Contact us.
+              </Link>
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                className="text-lg font-medium tracking-tight text-white/80 hover:text-white transition-colors w-fit"
+              >
+                Instagram.
+              </a>
+              <a
+                href="https://www.linkedin.com"
+                target="_blank"
+                rel="noreferrer"
+                className="text-lg font-medium tracking-tight text-white/80 hover:text-white transition-colors w-fit"
+              >
+                Linkedin.
+              </a>
+              <a
+                href="mailto:hello@prismbee.com"
+                className="text-lg font-medium tracking-tight text-[#A7F3D0] hover:underline w-fit"
+              >
+                hello@prismbee.com
+              </a>
+            </nav>
+          </div>
+
+          {/* Right: Newsletter (Get Prismbee in your DMs) */}
+          <div className="md:col-span-7 lg:col-span-6 flex flex-col gap-6 md:pl-8 lg:pl-16">
+            <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
+              Get Prismbee in your DMs.
+            </h3>
+
+            {isSubscribed ? (
+              <p className="text-[#A7F3D0] font-semibold text-lg">
+                You're on the list. Talk soon.
+              </p>
+            ) : (
+              <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
+                <div className="flex items-center rounded-full bg-white/10 border border-white/20 px-5 py-2.5 focus-within:border-[#10B981] transition-colors">
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Work email"
+                    className="flex-1 bg-transparent text-white placeholder:text-white/50 text-base font-medium outline-none"
+                  />
+                  <button
+                    type="submit"
+                    className="pill-cta-inverted text-xs py-2 px-4 ml-2"
+                  >
+                    Subscribe
+                  </button>
+                </div>
+                <p className="text-xs text-white/50 tracking-tight">
+                  We respect your inbox. Unsubscribe anytime.
+                </p>
+              </form>
+            )}
+          </div>
+        </div>
 
         {/* Bottom Bar */}
-        <div className="flex justify-between items-center opacity-50">
-          <p className="font-body text-[13px] text-white">
-            &copy; 2026 Prismbee. All rights reserved.
-          </p>
+        <div className="pt-12 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60 tracking-tight">
+          <p>© {new Date().getFullYear()} Prismbee. All rights reserved.</p>
+          <div className="flex items-center gap-6">
+            <Link to="/contact" className="hover:text-white transition-colors">
+              Privacy.
+            </Link>
+            <Link to="/contact" className="hover:text-white transition-colors">
+              Terms.
+            </Link>
+          </div>
         </div>
-
       </div>
     </footer>
   );

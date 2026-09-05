@@ -6,82 +6,180 @@
   --color-mint: #A7F3D0;
   --color-mist: #F0FDF4;
   --color-white: #FFFFFF;
-  --color-body-text: #334155;
+  --color-body-text: #1e293b;
 
-  --font-display: "Plus Jakarta Sans", sans-serif;
-  --font-body: "Inter", sans-serif;
-  --font-editorial: "Instrument Serif", serif;
+  --font-grotesque: "Inter Tight", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Inter Tight", "Plus Jakarta Sans", sans-serif;
+  --font-body: "Inter Tight", "Inter", sans-serif;
 }
 
-/* Base resets & utilities based on prompt */
+/* Base resets & typography */
 @layer base {
   html {
     scroll-behavior: smooth;
+    background-color: #FFFFFF;
+    color: #064E3B;
   }
-  
+
   body {
-    @apply font-body text-body-text bg-white;
-  }
-  
-  h1, h2, h3, .font-display {
-    @apply font-display;
+    font-family: var(--font-grotesque);
+    color: var(--color-body-text);
+    background-color: #FFFFFF;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  .font-editorial {
-    @apply font-editorial italic;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-grotesque);
+    letter-spacing: -0.04em;
+  }
+
+  /* No default outline, accessible focus-visible */
+  :focus-visible {
+    outline: 2px solid var(--color-emerald);
+    outline-offset: 2px;
   }
 }
 
+/* Huge Inc style components */
 @layer components {
-  .btn-primary {
-    @apply bg-emerald text-white uppercase font-display font-bold text-[13px] tracking-wider rounded-[6px] px-6 py-3 transition-all duration-300;
+  /* Minimal pill CTA */
+  .pill-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    padding: 0.625rem 1.75rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    background-color: #064E3B;
+    color: #FFFFFF;
+    transition: background-color 0.2s ease, transform 0.2s ease;
   }
-  .btn-primary:hover {
-    @apply scale-102 shadow-[0_0_20px_rgba(16,185,129,0.3)];
+  .pill-cta:hover {
+    background-color: #04382A;
+    transform: scale(1.02);
   }
 
-  .btn-secondary {
-    @apply border-[1.5px] border-obsidian text-obsidian bg-transparent font-display font-bold text-[13px] tracking-wider uppercase rounded-[6px] px-6 py-3 transition-all duration-300;
+  .pill-cta-inverted {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    padding: 0.625rem 1.75rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    background-color: #FFFFFF;
+    color: #064E3B;
+    transition: background-color 0.2s ease, transform 0.2s ease;
   }
-  .btn-secondary:hover {
-    @apply scale-102 bg-obsidian/5;
+  .pill-cta-inverted:hover {
+    background-color: #A7F3D0;
+    transform: scale(1.02);
   }
 
-  .card {
-    @apply bg-white border border-mint rounded-[8px] shadow-[0_4px_24px_rgba(6,78,59,0.05)];
+  /* Duplicate title scroll effect for cards */
+  .duplicate-title-wrap {
+    overflow: hidden;
+    display: inline-block;
+    height: 1.15em;
+    vertical-align: top;
+  }
+
+  .duplicate-title-inner {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .group:hover .duplicate-title-inner {
+    transform: translateY(-50%);
+  }
+
+  /* Huge Inc Case Study Card */
+  .huge-card {
+    position: relative;
+    width: 100%;
+    min-height: 75vh;
+    height: 75svh;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .huge-card-img {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .group:hover .huge-card-img {
+    transform: scale(1.035);
   }
 }
 
-/* Utilities for marquee */
-@keyframes marquee {
+/* Infinite Marquee - No pause on hover as per prompt */
+@keyframes marqueeContinuous {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
 }
 
-.animate-marquee {
-  animation: marquee 20s linear infinite;
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  animation: marqueeContinuous 35s linear infinite;
+  will-change: transform;
 }
 
-.animate-marquee:hover {
-  animation-play-state: paused;
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  background-color: #10B981;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              height 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.08s ease-out,
+              opacity 0.2s ease;
+  transform: translate(-50%, -50%);
 }
 
-/* Utilities for card animations */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0px); }
+.custom-cursor.cursor-active {
+  width: 36px;
+  height: 36px;
+  background-color: #A7F3D0;
+  opacity: 0.75;
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion) {
-  .btn-primary:hover, .btn-secondary:hover {
-    @apply scale-100;
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
-  .animate-marquee, .animate-float {
-    animation: none;
+  .animate-marquee-infinite {
+    animation: none !important;
+  }
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
   }
 }

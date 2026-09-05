@@ -1,125 +1,181 @@
-import { motion } from 'framer-motion';
-import { Link } from 'react-scroll';
-import { Check } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Pricing() {
+  const containerRef = useRef(null);
+
   const packages = [
     {
-      name: "Starter",
-      price: "Custom Quote",
+      name: 'Starter.',
+      price: 'Custom Scope',
+      desc: 'Foundational brand identity and single-channel organic engine.',
       featured: false,
       features: [
-        "Brand identity setup",
-        "1 platform social management",
-        "Basic website (5 pages)",
-        "Monthly analytics report"
-      ],
-      ctaText: "Get Started",
-      btnClass: "btn-secondary w-full"
+        'Brand identity setup & guidelines',
+        '1 platform organic social management',
+        'High-converting 5-page web platform',
+        'Monthly performance analytics report'
+      ]
     },
     {
-      name: "Growth",
-      badge: "Most Popular",
-      price: "Custom Quote",
+      name: 'Growth.',
+      badge: 'Most Popular',
+      price: 'Custom Scope',
+      desc: 'Complete multi-platform growth engine and conversion infrastructure.',
       featured: true,
       features: [
-        "Full brand system",
-        "3-platform social management",
-        "Website + 2 landing pages",
-        "Reels & Shorts production",
-        "Community management",
-        "Monthly growth report"
-      ],
-      ctaText: "Book a Call",
-      btnClass: "btn-primary w-full"
+        'Full brand identity design system',
+        '3-platform organic social management',
+        'Web platform + dedicated landing pages',
+        'Reels & video content production',
+        'Daily community management & engagement',
+        'Comprehensive monthly growth report'
+      ]
     },
     {
-      name: "Authority",
-      price: "Custom Quote",
+      name: 'Authority.',
+      price: 'Custom Scope',
+      desc: 'Full-service enterprise scale for industry category leaders.',
       featured: false,
       features: [
-        "Premium brand identity",
-        "Full multi-platform management",
-        "Custom web platform",
-        "Video production",
-        "Dedicated account manager",
-        "Bi-weekly strategy sessions"
-      ],
-      ctaText: "Get Started",
-      btnClass: "btn-secondary w-full"
+        'Premium enterprise brand system',
+        'Full multi-platform social management',
+        'Custom web application / platform',
+        'Studio video production & creative direction',
+        'Dedicated senior account manager',
+        'Bi-weekly strategic executive sessions'
+      ]
     }
   ];
 
-  return (
-    <section className="bg-white py-24" id="packages">
-      <div className="container mx-auto px-6 max-w-7xl">
-        
-        {/* Section Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16"
-        >
-          <h3 className="text-emerald font-display font-medium text-lg uppercase tracking-widest mb-2">
-            Investment
-          </h3>
-          <h2 className="text-obsidian font-display font-bold text-3xl md:text-4xl mb-4">
-            Flexible Packages, Clear Results
-          </h2>
-          <p className="text-body-text font-body text-base md:text-lg">
-            Every Prismbee engagement is scoped to your brand's exact growth stage.
-          </p>
-        </motion.div>
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
 
-        {/* Pricing Cards */}
-        <div className="grid lg:grid-cols-3 gap-8 items-center">
-          {packages.map((pkg, index) => (
-            <div 
-              key={index} 
-              className={`flex flex-col p-8 md:p-10 rounded-[8px] transition-transform duration-300 hover:-translate-y-2 ${
-                pkg.featured 
-                  ? 'bg-obsidian text-white border border-mint shadow-[0_0_30px_rgba(167,243,208,0.2)] lg:scale-105 relative z-10' 
-                  : 'bg-white text-obsidian border border-mint/50 shadow-[0_4px_24px_rgba(6,78,59,0.05)]'
-              }`}
+    const cards = containerRef.current?.querySelectorAll('.reveal-price-card');
+    if (!cards) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    cards.forEach((card, idx) => {
+      card.style.transitionDelay = `${idx * 80}ms`;
+      observer.observe(card);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section
+      ref={containerRef}
+      className="w-full min-h-screen pt-36 pb-24 px-6 md:px-12 max-w-[1600px] mx-auto bg-white"
+    >
+      {/* Header */}
+      <div className="mb-16 md:mb-24">
+        <h1 className="text-[#064E3B] font-extrabold text-[clamp(3.5rem,10vw,8.5rem)] tracking-[-0.04em] leading-[0.85] select-none">
+          Pricing.
+        </h1>
+        <p className="mt-6 text-[#064E3B] font-semibold text-[clamp(1.15rem,2.2vw,1.6rem)] leading-snug tracking-tight max-w-[580px]">
+          Flexible packages, clear results. Every engagement is scoped to your brand's exact growth stage.
+        </p>
+      </div>
+
+      {/* Pricing Cards Grid (Huge Inc layout) */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
+        {packages.map((pkg, index) => {
+          const isFeatured = pkg.featured;
+          return (
+            <div
+              key={index}
+              className="reveal-price-card opacity-0 translate-y-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [&.is-revealed]:opacity-100 [&.is-revealed]:translate-y-0 flex"
             >
-              <div className="mb-8">
-                <div className="flex items-center justify-between mb-4">
-                  <h4 className="font-display font-bold text-2xl">{pkg.name}</h4>
-                  {pkg.badge && (
-                    <span className="bg-emerald text-white text-xs font-display font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                      {pkg.badge}
-                    </span>
-                  )}
+              <div
+                className={`w-full p-8 sm:p-10 md:p-12 rounded-[28px] md:rounded-[36px] flex flex-col justify-between transition-transform duration-300 hover:scale-[1.01] ${
+                  isFeatured
+                    ? 'bg-[#064E3B] text-white'
+                    : 'bg-[#F0FDF4] text-[#064E3B] border border-[#A7F3D0]/60'
+                }`}
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-4 mb-4">
+                    <h2 className="font-extrabold text-3xl sm:text-4xl tracking-tight">
+                      {pkg.name}
+                    </h2>
+                    {pkg.badge && (
+                      <span className="text-xs font-bold tracking-tight px-3 py-1 rounded-full bg-[#10B981] text-white">
+                        {pkg.badge}
+                      </span>
+                    )}
+                  </div>
+
+                  <p
+                    className={`font-semibold text-lg tracking-tight mb-4 ${
+                      isFeatured ? 'text-[#A7F3D0]' : 'text-[#10B981]'
+                    }`}
+                  >
+                    {pkg.price}
+                  </p>
+
+                  <p
+                    className={`text-sm sm:text-base font-medium tracking-tight mb-8 ${
+                      isFeatured ? 'text-white/80' : 'text-[#064E3B]/80'
+                    }`}
+                  >
+                    {pkg.desc}
+                  </p>
+
+                  <div
+                    className={`h-px w-full mb-8 ${
+                      isFeatured ? 'bg-white/15' : 'bg-[#064E3B]/10'
+                    }`}
+                  />
+
+                  <ul className="flex flex-col gap-4 mb-10">
+                    {pkg.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span
+                          className={`font-bold select-none ${
+                            isFeatured ? 'text-[#A7F3D0]' : 'text-[#10B981]'
+                          }`}
+                        >
+                          —
+                        </span>
+                        <span
+                          className={`text-sm sm:text-base font-medium tracking-tight ${
+                            isFeatured ? 'text-white/90' : 'text-[#1e293b]'
+                          }`}
+                        >
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="font-display font-semibold text-xl opacity-90">
-                  {pkg.price}
+
+                <div className="pt-6">
+                  <Link
+                    to="/contact"
+                    className={`w-full block text-center py-4 text-base ${
+                      isFeatured ? 'pill-cta-inverted' : 'pill-cta'
+                    }`}
+                  >
+                    Get a proposal
+                  </Link>
                 </div>
               </div>
-
-              <div className="h-px w-full bg-mint/20 mb-8"></div>
-
-              <ul className="flex flex-col gap-4 mb-10 flex-grow">
-                {pkg.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check className={`w-5 h-5 shrink-0 ${pkg.featured ? 'text-mint' : 'text-emerald'}`} />
-                    <span className={`font-body text-[15px] ${pkg.featured ? 'text-slate-300' : 'text-body-text'}`}>
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <Link to="contact" smooth={true} duration={800} offset={-80} className="mt-auto">
-                <button className={pkg.btnClass}>
-                  {pkg.ctaText}
-                </button>
-              </Link>
             </div>
-          ))}
-        </div>
-
+          );
+        })}
       </div>
     </section>
   );

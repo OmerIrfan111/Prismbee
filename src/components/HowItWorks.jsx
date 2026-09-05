@@ -1,80 +1,110 @@
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function HowItWorks() {
+  const containerRef = useRef(null);
+
   const phases = [
     {
-      num: "01",
-      label: "Discovery & Onboarding",
-      desc: "Brand questionnaire, competitor analysis, audience persona mapping, and technical access setup."
+      num: '01',
+      label: 'Discovery & Onboarding.',
+      desc: 'Brand questionnaire, competitor analysis, audience persona mapping, and technical access setup.'
     },
     {
-      num: "02",
-      label: "Design & Strategy",
-      desc: "Moodboards, logo suite creation, site wireframes, and a full 30-day content calendar."
+      num: '02',
+      label: 'Design & Strategy.',
+      desc: 'Moodboards, logo suite creation, site wireframes, and a comprehensive 30-day multi-channel content calendar.'
     },
     {
-      num: "03",
-      label: "Build & Launch",
-      desc: "Web development, hosting, Reels editing, caption writing, and initial publishing."
+      num: '03',
+      label: 'Build & Launch.',
+      desc: 'High-speed web engineering, responsive QA, Reels & media production, strategic copy, and publishing.'
     },
     {
-      num: "04",
-      label: "Management & Scaling",
-      desc: "Daily engagement, publishing, platform optimization, and monthly performance reporting."
+      num: '04',
+      label: 'Management & Scaling.',
+      desc: 'Continuous engagement, publishing rhythm, platform optimization, and rigorous monthly performance reporting.'
     }
   ];
 
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const items = containerRef.current?.querySelectorAll('.reveal-approach-item');
+    if (!items) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    items.forEach((item, idx) => {
+      item.style.transitionDelay = `${idx * 100}ms`;
+      observer.observe(item);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="bg-mist py-24" id="how-it-works">
-      <div className="container mx-auto px-6 max-w-7xl">
-        
-        {/* Section Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-20"
-        >
-          <h3 className="text-emerald font-display font-medium text-lg uppercase tracking-widest mb-2">
-            Our Process
-          </h3>
-          <h2 className="text-obsidian font-display font-bold text-3xl md:text-4xl">
-            From Strategy to Scale
-          </h2>
-        </motion.div>
+    <section
+      ref={containerRef}
+      className="w-full min-h-screen pt-36 pb-24 px-6 md:px-12 max-w-[1600px] mx-auto bg-white"
+    >
+      {/* Header */}
+      <div className="mb-16 md:mb-24">
+        <h1 className="text-[#064E3B] font-extrabold text-[clamp(3.5rem,10vw,8.5rem)] tracking-[-0.04em] leading-[0.85] select-none">
+          Approach.
+        </h1>
+        <p className="mt-6 text-[#064E3B] font-semibold text-[clamp(1.15rem,2.2vw,1.6rem)] leading-snug tracking-tight max-w-[580px]">
+          From strategy to scale. A disciplined four-phase delivery methodology.
+        </p>
+      </div>
 
-        {/* Stepper */}
-        <div className="relative">
-          {/* Connecting Line (Desktop) */}
-          <div className="hidden md:block absolute top-6 left-[12.5%] right-[12.5%] h-[2px] border-t-2 border-dashed border-mint z-0"></div>
-          
-          {/* Connecting Line (Mobile) */}
-          <div className="md:hidden absolute top-6 bottom-6 left-6 w-[2px] border-l-2 border-dashed border-mint z-0"></div>
+      {/* Sequential Phase Grid (Huge Inc style) */}
+      <div className="flex flex-col divide-y divide-[#064E3B]/15">
+        {phases.map((phase, index) => (
+          <div
+            key={index}
+            className="reveal-approach-item py-12 md:py-16 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-baseline opacity-0 translate-y-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [&.is-revealed]:opacity-100 [&.is-revealed]:translate-y-0"
+          >
+            <div className="md:col-span-2">
+              <span className="font-extrabold text-4xl sm:text-5xl md:text-6xl text-[#10B981] tracking-tight">
+                {phase.num}
+              </span>
+            </div>
 
-          <div className="grid md:grid-cols-4 gap-12 md:gap-6">
-            {phases.map((phase, index) => (
-              <div key={index} className="relative z-10 flex flex-col md:items-center text-left md:text-center pl-16 md:pl-0">
-                
-                {/* Number Circle */}
-                <div className="absolute md:relative left-0 md:left-auto top-0 md:top-auto w-12 h-12 bg-white border-2 border-emerald rounded-full flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
-                  <span className="font-display font-extrabold text-emerald text-lg">
-                    {phase.num}
-                  </span>
-                </div>
-                
-                <h4 className="text-obsidian font-display font-semibold text-xl mb-3">
-                  {phase.label}
-                </h4>
-                
-                <p className="text-body-text font-body text-[15px] leading-relaxed">
-                  {phase.desc}
-                </p>
-              </div>
-            ))}
+            <div className="md:col-span-5">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#064E3B] tracking-tight">
+                {phase.label}
+              </h2>
+            </div>
+
+            <div className="md:col-span-5">
+              <p className="text-lg md:text-xl font-medium text-[#1e293b]/80 leading-relaxed tracking-tight">
+                {phase.desc}
+              </p>
+            </div>
           </div>
-        </div>
+        ))}
+      </div>
 
+      {/* Bottom CTA */}
+      <div className="mt-20 pt-12 border-t border-[#064E3B]/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <p className="font-bold text-2xl md:text-3xl text-[#064E3B] tracking-tight">
+          Ready to put our approach to work?
+        </p>
+        <Link to="/contact" className="pill-cta">
+          Let's talk
+        </Link>
       </div>
     </section>
   );

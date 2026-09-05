@@ -1,111 +1,138 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
   const location = useLocation();
-
-  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 60);
+      setIsScrolled(window.scrollY > 30);
     };
-    window.addEventListener('scroll', handleScroll);
-    
-    // Close mobile menu on route change
-    setIsMobileMenuOpen(false);
-    // Scroll to top on route change
-    window.scrollTo(0, 0);
-
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [location.pathname]);
+  }, []);
+
 
   const navLinks = [
-    { name: 'Services', to: '/services' },
-    { name: 'How It Works', to: '/how-it-works' },
-    { name: 'Why Prismbee', to: '/why-prismbee' },
-    { name: 'Packages', to: '/packages' },
-    { name: 'Contact', to: '/contact' }
+    { name: 'Work', to: '/work' },
+    { name: 'Solutions', to: '/services' },
+    { name: 'Approach', to: '/how-it-works' },
+    { name: 'Company', to: '/why-prismbee' },
+    { name: 'Pricing', to: '/packages' }
   ];
 
-  // Force dark background if not on home page or if scrolled
-  const navBackgroundClass = (isScrolled || !isHomePage) 
-    ? 'bg-obsidian shadow-lg py-4' 
-    : 'bg-transparent py-6';
-
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBackgroundClass}`}
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white/90 backdrop-blur-md py-3 shadow-[0_2px_20px_rgba(6,78,59,0.06)]'
+          : 'bg-transparent py-5 lg:py-6'
+      }`}
     >
-      <div className="container mx-auto px-6 max-w-7xl flex items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 cursor-pointer">
-          <img src="/logo.png" alt="Prismbee Logo" className="w-8 h-8 object-contain" />
-          <span className="font-display font-bold text-white text-xl sm:text-2xl tracking-tight">Prismbee</span>
+      <div className="w-full px-6 md:px-12 max-w-[1600px] mx-auto flex items-center justify-between">
+        {/* Left: Brand Logo & Wordmark */}
+        <Link to="/" className="flex items-center gap-2.5 group cursor-pointer">
+          <img
+            src="/logo.png"
+            alt="Prismbee Logo"
+            className="w-7 h-7 sm:w-8 sm:h-8 object-contain transition-transform duration-300 group-hover:scale-105"
+          />
+          <span className="font-extrabold text-[22px] sm:text-[24px] tracking-tight text-[#064E3B]">
+            Prismbee<span className="text-[#10B981]">.</span>
+          </span>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.to}
-              className="text-white font-body text-[14px] cursor-pointer relative group transition-colors"
-            >
-              {link.name}
-              <span className={`absolute -bottom-1 left-0 h-[2px] bg-emerald transition-all duration-300 ${location.pathname === link.to ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-            </Link>
-          ))}
+        {/* Center: Minimal plain text links (Huge style: no borders, no backgrounds, plain grotesque text) */}
+        <nav className="hidden lg:flex items-center gap-10" aria-label="Primary navigation">
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.to;
+            return (
+              <Link
+                key={link.name}
+                to={link.to}
+                className={`text-[15px] font-medium tracking-tight transition-colors duration-200 cursor-pointer ${
+                  isActive
+                    ? 'text-[#064E3B] font-semibold'
+                    : 'text-[#064E3B]/80 hover:text-[#064E3B]'
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
         </nav>
 
-        {/* CTA Button */}
-        <div className="hidden md:block">
-          <Link to="/contact">
-            <button className="btn-primary">
-              Get a Free Strategy Call
-            </button>
+        {/* Right: Pill CTA Button ("Let's talk" equivalent) */}
+        <div className="hidden lg:flex items-center gap-4">
+          <Link
+            to="/contact"
+            className="pill-cta"
+          >
+            Let's talk
           </Link>
         </div>
 
-        {/* Mobile Menu Toggle */}
-        <button 
-          className="md:hidden text-white"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        {/* Mobile menu button */}
+        <div className="lg:hidden flex items-center">
+          <button
+            onClick={() => setIsMobileOpen(!isMobileOpen)}
+            className="pill-cta text-sm py-2 px-5"
+            aria-label="Toggle Navigation Menu"
+          >
+            {isMobileOpen ? 'Close' : 'Menu'}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu Drawer */}
-      <div 
-        className={`fixed inset-0 bg-obsidian z-40 flex flex-col items-center justify-center transition-transform duration-300 ease-in-out md:hidden ${
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+      {/* Mobile Drawer (Huge Inc minimal layout) */}
+      <div
+        className={`fixed inset-0 bg-white z-40 flex flex-col justify-between p-8 md:p-12 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden ${
+          isMobileOpen
+            ? 'opacity-100 pointer-events-auto translate-y-0'
+            : 'opacity-0 pointer-events-none -translate-y-4'
         }`}
+        style={{ top: '64px', height: 'calc(100vh - 64px)' }}
       >
-        <button 
-          className="absolute top-6 right-6 text-white"
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          <X className="w-8 h-8" />
-        </button>
-        <div className="flex flex-col items-center gap-8">
+        <nav className="flex flex-col gap-6 pt-4">
+          <Link
+            to="/"
+            onClick={() => setIsMobileOpen(false)}
+            className="text-4xl font-bold tracking-tight text-[#064E3B] hover:text-[#10B981] transition-colors"
+          >
+            Home.
+          </Link>
           {navLinks.map((link) => (
             <Link
               key={link.name}
               to={link.to}
-              className={`font-display text-2xl font-semibold cursor-pointer transition-colors ${location.pathname === link.to ? 'text-emerald' : 'text-white hover:text-emerald'}`}
+              onClick={() => setIsMobileOpen(false)}
+              className="text-4xl font-bold tracking-tight text-[#064E3B] hover:text-[#10B981] transition-colors"
             >
-              {link.name}
+              {link.name}.
             </Link>
           ))}
-          <Link to="/contact">
-            <button className="btn-primary mt-4">
-              Get a Free Strategy Call
-            </button>
+          <Link
+            to="/contact"
+            onClick={() => setIsMobileOpen(false)}
+            className="text-4xl font-bold tracking-tight text-[#10B981] hover:text-[#064E3B] transition-colors"
+          >
+            Contact.
+          </Link>
+        </nav>
+
+        <div className="pt-8 border-t border-[#A7F3D0]/30 flex flex-col gap-4">
+          <p className="text-sm font-semibold text-[#064E3B]/60 tracking-tight">
+            Prismbee Digital Growth Agency
+          </p>
+          <Link
+            to="/contact"
+            onClick={() => setIsMobileOpen(false)}
+            className="pill-cta text-center w-full py-4 text-base"
+          >
+            Let's talk
           </Link>
         </div>
       </div>

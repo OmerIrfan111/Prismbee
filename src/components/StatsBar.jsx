@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-const CountUp = ({ end, duration = 2, suffix = "", prefix = "" }) => {
+const CountUp = ({ end, duration = 2, suffix = '', prefix = '' }) => {
   const [count, setCount] = useState(0);
   const countRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -13,7 +13,7 @@ const CountUp = ({ end, duration = 2, suffix = "", prefix = "" }) => {
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.2 }
     );
 
     if (countRef.current) {
@@ -33,11 +33,9 @@ const CountUp = ({ end, duration = 2, suffix = "", prefix = "" }) => {
       if (!startTime) startTime = timestamp;
       const progress = timestamp - startTime;
       const percentage = Math.min(progress / (duration * 1000), 1);
-      
-      // Easing out function
       const easeOutQuart = 1 - Math.pow(1 - percentage, 4);
       const currentCount = Math.floor(easeOutQuart * end);
-      
+
       setCount(currentCount);
 
       if (percentage < 1) {
@@ -61,27 +59,22 @@ const CountUp = ({ end, duration = 2, suffix = "", prefix = "" }) => {
 
 export default function StatsBar() {
   const stats = [
-    { value: 50, suffix: "+", label: "Brands Scaled" },
-    { value: 284, suffix: "%", label: "Avg. Organic Reach Increase" },
-    { value: 3, suffix: "×", label: "Average Conversion Rate Lift" },
-    { value: 60, suffix: " Days", label: "Avg. Time to First Results", noAnimate: true } 
-    // ^ Assuming "60 Days" can be mostly static or we animate the 60. We'll animate the 60.
+    { value: 50, suffix: '+', label: 'Brands Scaled.' },
+    { value: 284, suffix: '%', label: 'Avg. Organic Reach.' },
+    { value: 3, suffix: '×', label: 'Conversion Rate Lift.' },
+    { value: 60, suffix: ' Days', label: 'Time to Results.' }
   ];
 
   return (
-    <section className="bg-emerald py-16">
-      <div className="container mx-auto px-6 max-w-7xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <section className="w-full bg-[#064E3B] text-white py-20 md:py-28 px-6 md:px-12 my-12">
+      <div className="max-w-[1600px] mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 md:gap-14">
           {stats.map((stat, index) => (
-            <div key={index} className="flex flex-col">
-              <h4 className="font-display font-extrabold text-white text-4xl md:text-[48px] mb-2 leading-none">
-                {stat.noAnimate ? (
-                  <>{stat.value}{stat.suffix}</>
-                ) : (
-                  <CountUp end={stat.value} suffix={stat.suffix} />
-                )}
-              </h4>
-              <p className="font-body text-white/80 text-[14px]">
+            <div key={index} className="flex flex-col gap-2">
+              <span className="font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[-0.04em] text-[#A7F3D0]">
+                <CountUp end={stat.value} suffix={stat.suffix} />
+              </span>
+              <p className="text-white/80 font-medium text-base sm:text-lg md:text-xl tracking-tight">
                 {stat.label}
               </p>
             </div>
