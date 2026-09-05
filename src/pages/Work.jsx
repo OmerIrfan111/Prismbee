@@ -7,8 +7,8 @@ export default function Work() {
   return (
     <>
       <Hero
-        headline="Shipped."
-        subtitle="Work that reimagines experiences, drives outcomes and leaves things better than we found them."
+        headline="Produced."
+        subtitle="High-converting web platforms, viral video edits, and multi-channel marketing campaigns engineered to scale modern brands."
       />
       <SocialProof />
       <WorkGrid limit={6} />

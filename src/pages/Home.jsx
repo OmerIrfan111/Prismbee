@@ -8,8 +8,8 @@ export default function Home() {
   return (
     <>
       <Hero
-        headline="Scaled."
-        subtitle="Work that reimagines experiences, drives outcomes and leaves things better than we found them."
+        headline="Attention."
+        subtitle="We fuse high-converting web engineering, cinematic video editing, and organic social dominance to turn attention into revenue."
       />
       <SocialProof />
       <WorkGrid limit={4} />
