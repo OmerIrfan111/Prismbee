@@ -169,7 +169,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #000000;
+  background: #064E3B;
   z-index: 9999;
   clip-path: circle(0% at 50% 50%);
   will-change: clip-path;
