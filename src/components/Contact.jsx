@@ -78,6 +78,30 @@ export default function Contact() {
             </p>
           </div>
 
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#064E3B] tracking-tight mb-2">
+              Social.
+            </h2>
+            <div className="flex items-center gap-6">
+              <a
+                href="https://www.instagram.com/prismbee.co/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-lg font-semibold text-[#10B981] hover:underline tracking-tight inline-flex items-center gap-1"
+              >
+                Instagram ↗
+              </a>
+              <a
+                href="https://www.linkedin.com/company/prismbee/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-lg font-semibold text-[#10B981] hover:underline tracking-tight inline-flex items-center gap-1"
+              >
+                LinkedIn ↗
+              </a>
+            </div>
+          </div>
+
           <div className="p-8 rounded-[24px] bg-[#F0FDF4] border border-[#A7F3D0]/60">
             <h3 className="text-xl font-bold text-[#064E3B] tracking-tight mb-2">
               Expected Response Time.

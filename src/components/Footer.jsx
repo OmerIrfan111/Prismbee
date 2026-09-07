@@ -73,20 +73,20 @@ export default function Footer() {
                 Contact us.
               </Link>
               <a
-                href="https://www.instagram.com"
+                href="https://www.instagram.com/prismbee.co/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="text-lg font-medium tracking-tight text-white/80 hover:text-white transition-colors w-fit"
               >
                 Instagram.
               </a>
               <a
-                href="https://www.linkedin.com"
+                href="https://www.linkedin.com/company/prismbee/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="text-lg font-medium tracking-tight text-white/80 hover:text-white transition-colors w-fit"
               >
-                Linkedin.
+                LinkedIn.
               </a>
               <a
                 href="mailto:contact@prismbee.site"

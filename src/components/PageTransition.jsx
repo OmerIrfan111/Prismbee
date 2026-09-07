@@ -131,7 +131,7 @@ export default function PageTransition() {
       }
 
       e.preventDefault();
-      e.stopPropagation();
+      // Keep event propagating so React synthetic onClick handlers (like closing mobile menus) still fire
       isTransitioningRef.current = true;
       hasNavigatedRef.current = true;
 
