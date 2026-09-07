@@ -89,10 +89,10 @@ export default function Footer() {
                 Linkedin.
               </a>
               <a
-                href="mailto:hello@prismbee.com"
+                href="mailto:contact@prismbee.site"
                 className="text-lg font-medium tracking-tight text-[#A7F3D0] hover:underline w-fit"
               >
-                hello@prismbee.com
+                contact@prismbee.site
               </a>
             </nav>
           </div>

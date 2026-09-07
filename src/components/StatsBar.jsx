@@ -59,7 +59,7 @@ const CountUp = ({ end, duration = 2, suffix = '', prefix = '' }) => {
 
 export default function StatsBar() {
   const stats = [
-    { value: 50, suffix: '+', label: 'Brands Scaled.' },
+    { value: 100, suffix: '%', label: 'In-House Execution.' },
     { value: 284, suffix: '%', label: 'Avg. Organic Reach.' },
     { value: 3, suffix: '×', label: 'Conversion Rate Lift.' },
     { value: 60, suffix: ' Days', label: 'Time to Results.' }

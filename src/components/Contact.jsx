@@ -62,10 +62,10 @@ export default function Contact() {
               New Business.
             </h2>
             <a
-              href="mailto:hello@prismbee.com"
+              href="mailto:contact@prismbee.site"
               className="text-xl sm:text-2xl font-semibold text-[#10B981] hover:underline tracking-tight"
             >
-              hello@prismbee.com
+              contact@prismbee.site
             </a>
           </div>
 
