@@ -15,13 +15,6 @@ export default function Footer() {
   return (
     <footer className="w-full bg-[#064E3B] text-white pt-20 md:pt-32 pb-10 px-6 md:px-12">
       <div className="max-w-[1600px] mx-auto flex flex-col gap-16 md:gap-24">
-        {/* Giant "Done." display statement (Huge Inc signature) */}
-        <div>
-          <h2 className="text-[clamp(4.5rem,15vw,13rem)] font-extrabold tracking-[-0.045em] leading-[0.82] select-none text-white m-0 p-0">
-            Done<span className="text-[#10B981]">.</span>
-          </h2>
-        </div>
-
         {/* Middle Section: 2 Columns (Left: Nav, Right: Newsletter & Social) */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start">
           {/* Left: Nav Pages with Period Suffixes */}

@@ -29,7 +29,7 @@ const pages = [
           <li>Volumetric Dynamics — 3D Character & Motion</li>
         </ul>
       </main>
-      <footer><h2>Done.</h2><p>&copy; 2026 Prismbee.</p></footer>
+      <footer><p>&copy; 2026 Prismbee.</p></footer>
     `
   },
   {
@@ -64,7 +64,7 @@ const pages = [
           <p>Comprehensive logo suites, color palettes, typography systems, and brand guidelines.</p>
         </article>
       </main>
-      <footer><h2>Done.</h2><p>&copy; 2026 Prismbee.</p></footer>
+      <footer><p>&copy; 2026 Prismbee.</p></footer>
     `
   },
   {
@@ -88,7 +88,7 @@ const pages = [
           <li><h2>04. Management & Scaling</h2><p>Continuous engagement and rigorous monthly performance reporting.</p></li>
         </ol>
       </main>
-      <footer><h2>Done.</h2><p>&copy; 2026 Prismbee.</p></footer>
+      <footer><p>&copy; 2026 Prismbee.</p></footer>
     `
   },
   {
@@ -113,7 +113,7 @@ const pages = [
           <li>Brand Systems & Visuals — Long-Term Equity</li>
         </ul>
       </main>
-      <footer><h2>Done.</h2><p>&copy; 2026 Prismbee.</p></footer>
+      <footer><p>&copy; 2026 Prismbee.</p></footer>
     `
   },
   {
@@ -143,7 +143,7 @@ const pages = [
           <p>Full-service enterprise scale for industry category leaders.</p>
         </section>
       </main>
-      <footer><h2>Done.</h2><p>&copy; 2026 Prismbee.</p></footer>
+      <footer><p>&copy; 2026 Prismbee.</p></footer>
     `
   },
   {
@@ -164,7 +164,7 @@ const pages = [
         <p>Email: <a href="mailto:contact@prismbee.site">contact@prismbee.site</a></p>
         <p>Expected response time: within 24 business hours.</p>
       </main>
-      <footer><h2>Done.</h2><p>&copy; 2026 Prismbee.</p></footer>
+      <footer><p>&copy; 2026 Prismbee.</p></footer>
     `
   }
 ];
