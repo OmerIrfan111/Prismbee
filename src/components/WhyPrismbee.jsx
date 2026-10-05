@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from './SEO';
 
 export default function WhyPrismbee() {
   const containerRef = useRef(null);
@@ -99,13 +100,22 @@ export default function WhyPrismbee() {
       ref={containerRef}
       className="w-full min-h-screen pt-36 pb-24 px-6 md:px-12 max-w-[1600px] mx-auto bg-white"
     >
+      <SEO
+        title="Why Prismbee | Digital Growth Agency & Brand Scaling"
+        description="Learn why ambitious brands choose Prismbee for organic social dominance, cinematic video editing, and conversion-focused web engineering. Meet the agency."
+        canonical="https://www.prismbee.site/why-prismbee"
+      />
+
       {/* Header */}
       <div className="mb-16 md:mb-24">
+        <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#10B981] mb-3 block">
+          About Prismbee
+        </span>
         <h1 className="text-[#064E3B] font-extrabold text-[clamp(3.5rem,10vw,8.5rem)] tracking-[-0.04em] leading-[0.85] select-none">
           Company.
         </h1>
         <p className="mt-6 text-[#064E3B] font-semibold text-[clamp(1.15rem,2.2vw,1.6rem)] leading-snug tracking-tight max-w-[640px]">
-          Prismbee is a modern growth agency combining full-stack web engineering, cinematic video editing, and organic social dominance.
+          Prismbee is an elite digital growth agency combining full-stack web engineering, cinematic video editing, and organic social dominance.
         </p>
       </div>
 

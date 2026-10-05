@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Work from './pages/Work';
@@ -16,15 +16,15 @@ function App() {
           <Route index element={<Home />} />
           <Route path="work" element={<Work />} />
           <Route path="services" element={<Services />} />
-          <Route path="solutions" element={<Services />} />
+          <Route path="solutions" element={<Navigate to="/services" replace />} />
           <Route path="how-it-works" element={<HowItWorks />} />
-          <Route path="approach" element={<HowItWorks />} />
+          <Route path="approach" element={<Navigate to="/how-it-works" replace />} />
           <Route path="why-prismbee" element={<WhyPrismbee />} />
-          <Route path="company" element={<WhyPrismbee />} />
+          <Route path="company" element={<Navigate to="/why-prismbee" replace />} />
           <Route path="packages" element={<Pricing />} />
-          <Route path="pricing" element={<Pricing />} />
+          <Route path="pricing" element={<Navigate to="/packages" replace />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>

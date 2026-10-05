@@ -1,4 +1,46 @@
 {
+  "redirects": [
+    {
+      "source": "/solutions",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/approach",
+      "destination": "/how-it-works",
+      "permanent": true
+    },
+    {
+      "source": "/company",
+      "destination": "/why-prismbee",
+      "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/packages",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
+      ]
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/(.*)",

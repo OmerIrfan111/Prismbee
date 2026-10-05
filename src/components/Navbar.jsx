@@ -57,7 +57,7 @@ export default function Navbar() {
         >
           <img
             src="/logo.png"
-            alt="Prismbee Logo"
+            alt="Prismbee Digital Growth Agency Logo"
             className="w-7 h-7 sm:w-8 sm:h-8 object-contain transition-transform duration-300 group-hover:scale-105"
           />
           <span className="font-extrabold text-[22px] sm:text-[24px] tracking-tight text-[#064E3B]">

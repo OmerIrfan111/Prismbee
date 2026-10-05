@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from './SEO';
 
 export default function HowItWorks() {
   const containerRef = useRef(null);
@@ -59,8 +60,17 @@ export default function HowItWorks() {
       ref={containerRef}
       className="w-full min-h-screen pt-36 pb-24 px-6 md:px-12 max-w-[1600px] mx-auto bg-white"
     >
+      <SEO
+        title="Our Approach & Growth Process | How It Works | Prismbee"
+        description="Discover our disciplined 4-stage digital growth methodology from discovery and strategy to build and scaling. See how Prismbee turns attention into revenue."
+        canonical="https://www.prismbee.site/how-it-works"
+      />
+
       {/* Header */}
       <div className="mb-16 md:mb-24">
+        <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#10B981] mb-3 block">
+          Methodology & Delivery
+        </span>
         <h1 className="text-[#064E3B] font-extrabold text-[clamp(3.5rem,10vw,8.5rem)] tracking-[-0.04em] leading-[0.85] select-none">
           Approach.
         </h1>

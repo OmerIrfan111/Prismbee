@@ -5,7 +5,7 @@ export const videoData = [
     category: '3D Motion Design',
     duration: '0:35',
     src: '/videos/pf1.mp4',
-    thumbnail: '/thumbnails/image 11.jpg',
+    thumbnail: '/thumbnails/cgi-environments-3d-motion.jpg',
     description: 'Photorealistic 3D rendering, procedural particle systems, and dynamic simulations.'
   },
   {
@@ -14,7 +14,7 @@ export const videoData = [
     category: '3D Visual Effects',
     duration: '0:42',
     src: '/videos/pf8.mp4',
-    thumbnail: '/thumbnails/image 12.jpg',
+    thumbnail: '/thumbnails/kinetic-geometry-visual-effects.jpg',
     description: 'High-fidelity spatial animations, physics-based motion, and abstract 3D forms.'
   },
   {
@@ -23,7 +23,7 @@ export const videoData = [
     category: '3D Motion Graphics',
     duration: '0:30',
     src: '/videos/FB_VID_2940473812486549780.mp4',
-    thumbnail: '/thumbnails/image 13.jpg',
+    thumbnail: '/thumbnails/procedural-realms-motion-graphics.jpg',
     description: 'Computational 3D worldbuilding, lighting design, and cinematic camera choreography.'
   },
   {
@@ -32,7 +32,7 @@ export const videoData = [
     category: '3D Character & Motion',
     duration: '0:28',
     src: '/videos/FB_VID_8524364397615647730.mp4',
-    thumbnail: '/thumbnails/image 14.jpg',
+    thumbnail: '/thumbnails/volumetric-dynamics-character-animation.jpg',
     description: 'Advanced character rigging, photoreal texturing, and hard-surface 3D animation.',
     isZoomed: true,
     zoomScaleClass: 'scale-[1.1] md:scale-[1.16]'

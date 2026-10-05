@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from './SEO';
 
 export default function Services() {
   const containerRef = useRef(null);
@@ -7,24 +8,31 @@ export default function Services() {
   const services = [
     {
       num: '01',
-      title: 'Organic Social Growth.',
-      body: 'Full multi-platform management across Instagram, TikTok, LinkedIn, and more — with Reels, content calendars, community engagement, and monthly analytics.',
-      tags: ['Instagram', 'TikTok', 'LinkedIn', 'Reels Production', 'Analytics'],
+      title: 'Viral Organic Social Media Content.',
+      body: 'Full multi-platform organic management across TikTok, Instagram, and LinkedIn — with viral Reels production, content calendars, community growth, and monthly ROI analytics.',
+      tags: ['Social Media Content Agency', 'TikTok & Reels', 'Instagram Growth', 'LinkedIn Authority', 'Analytics'],
       color: 'bg-[#F0FDF4]'
     },
     {
       num: '02',
-      title: 'Web Engineering & Design.',
-      body: 'Bespoke, high-speed websites and landing pages built on Framer, Webflow, or Next.js — engineered to convert incoming traffic into qualified leads and paying clients.',
-      tags: ['Web Platforms', 'Landing Pages', 'UX/UI Design', 'Conversion Optimization'],
+      title: 'Cinematic Video Production.',
+      body: 'High-retention commercial video editing, 3D motion design, and visual storytelling engineered to captivate audiences in the first 3 seconds and convert attention into revenue.',
+      tags: ['Video Production Agency', '3D Motion Design', 'Scroll-Stopping Hooks', 'Commercial Video', 'Visual Effects'],
       color: 'bg-[#064E3B] text-white'
     },
     {
       num: '03',
-      title: 'Brand Identity & Systems.',
-      body: 'Logo suites, color palettes, typography systems, and comprehensive brand guidelines that establish authority and separate you from every competitor.',
-      tags: ['Brand Identity', 'Typography', 'Visual Guidelines', 'Design Systems'],
+      title: 'Conversion-Focused Web Design.',
+      body: 'Bespoke, high-speed websites and landing pages built on modern architectures — engineered to convert incoming organic traffic into qualified leads and paying clients.',
+      tags: ['Conversion-Focused Web Design', 'High-Speed Web Platforms', 'Landing Pages', 'UX/UI Engineering'],
       color: 'bg-[#F0FDF4]'
+    },
+    {
+      num: '04',
+      title: 'Brand Scaling & Identity Systems.',
+      body: 'Comprehensive logo suites, color palettes, typography systems, and brand guidelines that establish market dominance and scale modern brands sustainably.',
+      tags: ['Brand Scaling', 'Visual Identity', 'Typography Systems', 'Design Guidelines'],
+      color: 'bg-white text-[#064E3B] border border-[#064E3B]/15'
     }
   ];
 
@@ -60,13 +68,22 @@ export default function Services() {
       ref={containerRef}
       className="w-full min-h-screen pt-36 pb-24 px-6 md:px-12 max-w-[1600px] mx-auto bg-white"
     >
+      <SEO
+        title="Digital Growth Services | Video & Social Media | Prismbee"
+        description="Explore our growth services: viral organic social media content, cinematic video production, conversion web design, and brand scaling. Partner with Prismbee."
+        canonical="https://www.prismbee.site/services"
+      />
+
       {/* Header */}
       <div className="mb-16 md:mb-24">
+        <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#10B981] mb-3 block">
+          Digital Growth Agency Capabilities
+        </span>
         <h1 className="text-[#064E3B] font-extrabold text-[clamp(3.5rem,10vw,8.5rem)] tracking-[-0.04em] leading-[0.85] select-none">
           Solutions.
         </h1>
-        <p className="mt-6 text-[#064E3B] font-semibold text-[clamp(1.15rem,2.2vw,1.6rem)] leading-snug tracking-tight max-w-[580px]">
-          One partner. Every channel. Total growth system.
+        <p className="mt-6 text-[#064E3B] font-semibold text-[clamp(1.15rem,2.2vw,1.6rem)] leading-snug tracking-tight max-w-[620px]">
+          One unified growth agency. Every channel. Total digital growth system from attention to revenue.
         </p>
       </div>
 

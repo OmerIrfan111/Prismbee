@@ -3,7 +3,9 @@ import gsap from 'gsap';
 
 export default function Hero({ 
   headline = "Scaled.", 
-  subtitle = "Work that reimagines experiences, drives outcomes and leaves things better than we found them." 
+  subtitle = "Work that reimagines experiences, drives outcomes and leaves things better than we found them.",
+  eyebrow = null,
+  ariaLabel = null
 }) {
   const containerRef = useRef(null);
   const headlineRef = useRef(null);
@@ -72,9 +74,14 @@ export default function Hero({
         {/* Massive Display Scale Headline (clamp(80px, 14vw, 200px)), tight letter-spacing, clip-masked */}
         <h1
           ref={headlineRef}
-          aria-label={headline}
+          aria-label={ariaLabel || (eyebrow ? `${eyebrow} - ${headline}` : headline)}
           className="text-[#064E3B] font-extrabold tracking-[-0.045em] leading-[0.82] select-none text-[clamp(4.2rem,14vw,12.5rem)] m-0 p-0"
         >
+          {eyebrow && (
+            <span className="block text-xs sm:text-sm md:text-base font-bold uppercase tracking-[0.2em] text-[#10B981] mb-3 md:mb-5 select-text">
+              {eyebrow}
+            </span>
+          )}
           {headline.split('').map((char, index) => (
             <span
               key={index}

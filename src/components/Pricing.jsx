@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from './SEO';
 
 export default function Pricing() {
   const containerRef = useRef(null);
@@ -80,8 +81,17 @@ export default function Pricing() {
       ref={containerRef}
       className="w-full min-h-screen pt-36 pb-24 px-6 md:px-12 max-w-[1600px] mx-auto bg-white"
     >
+      <SEO
+        title="Digital Growth Packages & Pricing Scopes | Prismbee"
+        description="Explore flexible growth packages tailored to your brand stage. From foundational social & web to enterprise video and brand scaling, see Prismbee pricing."
+        canonical="https://www.prismbee.site/packages"
+      />
+
       {/* Header */}
       <div className="mb-16 md:mb-24">
+        <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#10B981] mb-3 block">
+          Investment & Scopes
+        </span>
         <h1 className="text-[#064E3B] font-extrabold text-[clamp(3.5rem,10vw,8.5rem)] tracking-[-0.04em] leading-[0.85] select-none">
           Pricing.
         </h1>

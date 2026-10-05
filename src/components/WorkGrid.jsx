@@ -89,7 +89,7 @@ export default function WorkGrid({ showHeader = false, title = "Selected Work" }
                 {/* Background Image Thumbnail provided in the section */}
                 <img
                   src={item.thumbnail}
-                  alt={item.title}
+                  alt={`${item.title.replace(/\.$/, '')} - ${item.category} Video Production by Prismbee`}
                   loading={index < 2 ? "eager" : "lazy"}
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />

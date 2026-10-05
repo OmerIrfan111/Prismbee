@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import SEO from './SEO';
 
 export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -44,8 +45,17 @@ export default function Contact() {
 
   return (
     <section className="w-full min-h-screen pt-36 pb-24 px-6 md:px-12 max-w-[1600px] mx-auto bg-white">
+      <SEO
+        title="Contact Prismbee | Book a Digital Growth Strategy Call"
+        description="Ready to turn attention into revenue? Contact Prismbee today to discuss your video production, social media content, and web design goals. Book a free call."
+        canonical="https://www.prismbee.site/contact"
+      />
+
       {/* Header */}
       <div className="mb-16 md:mb-24">
+        <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#10B981] mb-3 block">
+          Get in Touch
+        </span>
         <h1 className="text-[#064E3B] font-extrabold text-[clamp(3.5rem,10vw,8.5rem)] tracking-[-0.04em] leading-[0.85] select-none">
           Contact.
         </h1>
