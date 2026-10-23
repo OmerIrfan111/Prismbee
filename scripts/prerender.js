@@ -1,6 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { servicePages } from '../src/data/servicePages.js';
+import { staticContent, renderStaticBlock } from './staticContent.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,6 +23,14 @@ const pages = [
       'Explore our growth services: viral organic social media content, cinematic video production, conversion web design, and brand scaling. Partner with Prismbee.',
     canonical: 'https://www.prismbee.site/services'
   },
+  // Dedicated service pages — metadata pulled from the shared data file
+  // so the prerendered head always matches the React page.
+  ...servicePages.map((page) => ({
+    path: page.path.replace(/^\//, ''),
+    title: page.title,
+    description: page.description,
+    canonical: page.canonical
+  })),
   {
     path: 'how-it-works',
     title: 'Our Approach & Growth Process | How It Works | Prismbee',
@@ -50,6 +60,28 @@ const pages = [
     canonical: 'https://www.prismbee.site/contact'
   }
 ];
+
+/**
+ * Inject the crawlable static content block for a page inside #root.
+ * React's createRoot replaces it on load; crawlers and AI bots that do
+ * not run JavaScript read the real copy instead of an empty shell.
+ */
+function injectStaticContent(html, pagePath) {
+  const content = staticContent[pagePath];
+  if (!content) return html;
+
+  const block = renderStaticBlock(content);
+
+  if (html.includes('<div id="root"></div>')) {
+    return html.replace('<div id="root"></div>', `<div id="root">\n${block}\n</div>`);
+  }
+  if (html.includes('<div id="root">')) {
+    return html.replace('<div id="root">', `<div id="root">\n${block}`);
+  }
+
+  console.warn(`Could not find #root in template; static content skipped for "${pagePath}".`);
+  return html;
+}
 
 function prerender() {
   const templatePath = path.join(distDir, 'index.html');
@@ -110,9 +142,18 @@ function prerender() {
       `<meta name="twitter:description" content="${page.description}" />`
     );
 
+    // Inject crawlable static content inside #root
+    pageHtml = injectStaticContent(pageHtml, page.path);
+
     fs.writeFileSync(path.join(pageDir, 'index.html'), pageHtml, 'utf8');
-    console.log(`Prerendered metadata: dist/${page.path}/index.html`);
+    console.log(`Prerendered metadata + static content: dist/${page.path}/index.html`);
   }
+
+  // Home page: keep the template's own metadata, inject its static
+  // content block into dist/index.html itself.
+  const homeHtml = injectStaticContent(baseHtml, '');
+  fs.writeFileSync(templatePath, homeHtml, 'utf8');
+  console.log('Prerendered static content: dist/index.html (home)');
 
   console.log('All static page metadata generated cleanly.');
 }

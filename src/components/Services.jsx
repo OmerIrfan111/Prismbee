@@ -11,21 +11,27 @@ export default function Services() {
       title: 'Viral Organic Social Media Content.',
       body: 'Full multi-platform organic management across TikTok, Instagram, and LinkedIn — with viral Reels production, content calendars, community growth, and monthly ROI analytics.',
       tags: ['Social Media Content Agency', 'TikTok & Reels', 'Instagram Growth', 'LinkedIn Authority', 'Analytics'],
-      color: 'bg-[#F0FDF4]'
+      color: 'bg-[#F0FDF4]',
+      link: '/services/social-media-management',
+      linkLabel: 'View service'
     },
     {
       num: '02',
       title: 'Cinematic Video Production.',
       body: 'High-retention commercial video editing, 3D motion design, and visual storytelling engineered to captivate audiences in the first 3 seconds and convert attention into revenue.',
       tags: ['Video Production Agency', '3D Motion Design', 'Scroll-Stopping Hooks', 'Commercial Video', 'Visual Effects'],
-      color: 'bg-[#064E3B] text-white'
+      color: 'bg-[#064E3B] text-white',
+      link: '/services/video-editing',
+      linkLabel: 'View service'
     },
     {
       num: '03',
       title: 'Conversion-Focused Web Design.',
       body: 'Bespoke, high-speed websites and landing pages built on modern architectures — engineered to convert incoming organic traffic into qualified leads and paying clients.',
       tags: ['Conversion-Focused Web Design', 'High-Speed Web Platforms', 'Landing Pages', 'UX/UI Engineering'],
-      color: 'bg-[#F0FDF4]'
+      color: 'bg-[#F0FDF4]',
+      link: '/services/web-design',
+      linkLabel: 'View service'
     },
     {
       num: '04',
@@ -139,12 +145,26 @@ export default function Services() {
                     ))}
                   </div>
 
-                  <Link
-                    to="/contact"
-                    className={isDark ? 'pill-cta-inverted mt-4 sm:mt-0' : 'pill-cta mt-4 sm:mt-0'}
-                  >
-                    Start with this
-                  </Link>
+                  <div className="flex flex-wrap items-center gap-3 mt-4 sm:mt-0">
+                    {service.link && (
+                      <Link
+                        to={service.link}
+                        className={`font-semibold text-sm sm:text-base underline underline-offset-4 decoration-2 ${
+                          isDark
+                            ? 'text-white decoration-[#A7F3D0]'
+                            : 'text-[#064E3B] decoration-[#10B981]'
+                        }`}
+                      >
+                        {service.linkLabel}
+                      </Link>
+                    )}
+                    <Link
+                      to="/contact"
+                      className={isDark ? 'pill-cta-inverted' : 'pill-cta'}
+                    >
+                      Start with this
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

@@ -2,5 +2,34 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://www.prismbee.site/sitemap.xml
+# AI search and answer-engine crawlers are welcome to read all public
+# content so Prismbee can be cited accurately in AI answers.
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
 
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+
+User-agent: CCBot
+Allow: /
+Disallow: /api/
+
+Sitemap: https://www.prismbee.site/sitemap.xml

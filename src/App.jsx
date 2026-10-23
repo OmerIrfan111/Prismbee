@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Work from './pages/Work';
 import Services from './components/Services';
+import ServicePage from './components/ServicePage';
 import HowItWorks from './components/HowItWorks';
 import WhyPrismbee from './components/WhyPrismbee';
 import Pricing from './components/Pricing';
@@ -16,6 +17,15 @@ function App() {
           <Route index element={<Home />} />
           <Route path="work" element={<Work />} />
           <Route path="services" element={<Services />} />
+          <Route
+            path="services/video-editing"
+            element={<ServicePage slug="video-editing" />}
+          />
+          <Route
+            path="services/social-media-management"
+            element={<ServicePage slug="social-media-management" />}
+          />
+          <Route path="services/web-design" element={<ServicePage slug="web-design" />} />
           <Route path="solutions" element={<Navigate to="/services" replace />} />
           <Route path="how-it-works" element={<HowItWorks />} />
           <Route path="approach" element={<Navigate to="/how-it-works" replace />} />
