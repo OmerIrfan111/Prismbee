@@ -76,21 +76,21 @@ export default function Hero({
       {/* Layered emerald gradient backdrop (brand colours) */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div
-          className="absolute -top-40 right-[-10%] w-[600px] h-[600px] rounded-none"
+          className="absolute -top-40 right-[-10%] w-[600px] h-[600px] rounded-full"
           style={{
             background:
               'radial-gradient(circle, rgba(16,185,129,0.22) 0%, rgba(16,185,129,0) 65%)'
           }}
         />
         <div
-          className="absolute bottom-[-25%] left-[-8%] w-[540px] h-[540px] rounded-none"
+          className="absolute bottom-[-25%] left-[-8%] w-[540px] h-[540px] rounded-full"
           style={{
             background:
               'radial-gradient(circle, rgba(167,243,208,0.4) 0%, rgba(167,243,208,0) 68%)'
           }}
         />
         <div
-          className="absolute top-1/3 left-1/4 w-[440px] h-[440px] rounded-none"
+          className="absolute top-1/3 left-1/4 w-[440px] h-[440px] rounded-full"
           style={{
             background:
               'radial-gradient(circle, rgba(240,253,244,0.95) 0%, rgba(240,253,244,0) 70%)'
@@ -119,7 +119,7 @@ export default function Hero({
               <span
                 className={`hero-char inline-block will-change-transform ${
                   index >= lastWordStart
-                    ? 'text-[#10B981]'
+                    ? 'bg-gradient-to-b from-[#10B981] via-[#0B9E73] to-[#064E3B] bg-clip-text text-transparent'
                     : ''
                 }`}
               >
@@ -150,7 +150,7 @@ export default function Hero({
                 key={fact}
                 className="inline-flex items-center gap-2 text-sm font-semibold tracking-tight text-[#064E3B]/75"
               >
-                <span aria-hidden="true" className="w-1.5 h-1.5 rounded-none bg-[#10B981]" />
+                <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
                 {fact}
               </span>
             ))}

@@ -44,12 +44,12 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/90'
+          ? 'bg-white/90 backdrop-blur-md shadow-[0_2px_20px_rgba(6,78,59,0.06)]'
           : ''
       }`}
     >
       {/* Launch offer announcement bar */}
-      <div className="bg-[#064E3B] text-white">
+      <div className="bg-gradient-to-r from-[#064E3B] via-[#0A6B4F] to-[#10B981] text-white">
         <p className="w-full px-6 md:px-12 max-w-[1600px] mx-auto py-2 text-center text-xs sm:text-[13px] font-semibold tracking-tight">
           Launch offer: 40% off your first month on every Prismbee package
           <Link

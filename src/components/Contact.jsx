@@ -112,7 +112,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="p-8 rounded-none bg-[#F0FDF4] border border-[#A7F3D0]/60">
+          <div className="p-8 rounded-[24px] bg-[#F0FDF4] border border-[#A7F3D0]/60">
             <h3 className="text-xl font-bold text-[#064E3B] tracking-tight mb-2">
               Expected Response Time.
             </h3>
@@ -125,7 +125,7 @@ export default function Contact() {
         {/* Right Column: Clean, Minimal Form */}
         <div className="lg:col-span-7">
           {isSubmitted ? (
-            <div className="p-12 sm:p-16 rounded-none bg-[#F0FDF4] border border-[#A7F3D0] flex flex-col items-start gap-4">
+            <div className="p-12 sm:p-16 rounded-[32px] bg-[#F0FDF4] border border-[#A7F3D0] flex flex-col items-start gap-4">
               <span className="text-[#10B981] font-bold text-xl">Thank you.</span>
               <h3 className="text-3xl sm:text-4xl font-extrabold text-[#064E3B] tracking-tight">
                 Message received.
@@ -143,10 +143,10 @@ export default function Contact() {
           ) : (
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col gap-6 p-8 sm:p-12 rounded-none bg-[#F0FDF4] border border-[#A7F3D0]/60"
+              className="flex flex-col gap-6 p-8 sm:p-12 rounded-[32px] bg-[#F0FDF4] border border-[#A7F3D0]/60"
             >
               {error && (
-                <div className="text-red-700 bg-red-50 p-4 rounded-none text-sm font-semibold">
+                <div className="text-red-700 bg-red-50 p-4 rounded-xl text-sm font-semibold">
                   {error}
                 </div>
               )}
@@ -163,7 +163,7 @@ export default function Contact() {
                     name="name"
                     disabled={isLoading}
                     placeholder="Jane Doe"
-                    className="w-full bg-white border border-[#064E3B]/15 rounded-none px-4 py-3.5 text-[#064E3B] font-medium placeholder:text-[#064E3B]/40 focus:border-[#10B981] focus:outline-none transition-colors"
+                    className="w-full bg-white border border-[#064E3B]/15 rounded-xl px-4 py-3.5 text-[#064E3B] font-medium placeholder:text-[#064E3B]/40 focus:border-[#10B981] focus:outline-none transition-colors"
                   />
                 </div>
 
@@ -178,7 +178,7 @@ export default function Contact() {
                     name="email"
                     disabled={isLoading}
                     placeholder="jane@brand.com"
-                    className="w-full bg-white border border-[#064E3B]/15 rounded-none px-4 py-3.5 text-[#064E3B] font-medium placeholder:text-[#064E3B]/40 focus:border-[#10B981] focus:outline-none transition-colors"
+                    className="w-full bg-white border border-[#064E3B]/15 rounded-xl px-4 py-3.5 text-[#064E3B] font-medium placeholder:text-[#064E3B]/40 focus:border-[#10B981] focus:outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -195,7 +195,7 @@ export default function Contact() {
                     name="brand"
                     disabled={isLoading}
                     placeholder="Acme Co."
-                    className="w-full bg-white border border-[#064E3B]/15 rounded-none px-4 py-3.5 text-[#064E3B] font-medium placeholder:text-[#064E3B]/40 focus:border-[#10B981] focus:outline-none transition-colors"
+                    className="w-full bg-white border border-[#064E3B]/15 rounded-xl px-4 py-3.5 text-[#064E3B] font-medium placeholder:text-[#064E3B]/40 focus:border-[#10B981] focus:outline-none transition-colors"
                   />
                 </div>
 
@@ -209,7 +209,7 @@ export default function Contact() {
                     name="service"
                     defaultValue=""
                     disabled={isLoading}
-                    className="w-full bg-white border border-[#064E3B]/15 rounded-none px-4 py-3.5 text-[#064E3B] font-medium focus:border-[#10B981] focus:outline-none transition-colors cursor-pointer"
+                    className="w-full bg-white border border-[#064E3B]/15 rounded-xl px-4 py-3.5 text-[#064E3B] font-medium focus:border-[#10B981] focus:outline-none transition-colors cursor-pointer"
                   >
                     <option value="" disabled>Select service</option>
                     <option value="social">Organic Social Growth</option>
@@ -231,7 +231,7 @@ export default function Contact() {
                   rows={4}
                   disabled={isLoading}
                   placeholder="Tell us about your brand and growth goals..."
-                  className="w-full bg-white border border-[#064E3B]/15 rounded-none px-4 py-3.5 text-[#064E3B] font-medium placeholder:text-[#064E3B]/40 focus:border-[#10B981] focus:outline-none transition-colors resize-none"
+                  className="w-full bg-white border border-[#064E3B]/15 rounded-xl px-4 py-3.5 text-[#064E3B] font-medium placeholder:text-[#064E3B]/40 focus:border-[#10B981] focus:outline-none transition-colors resize-none"
                 />
               </div>
 

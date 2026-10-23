@@ -37,7 +37,7 @@ export default function ServicePage({ slug: slugProp }) {
           {page.eyebrow}
         </span>
         <h1 className="text-[#064E3B] font-extrabold text-[clamp(2.6rem,6.5vw,5.5rem)] tracking-[-0.04em] leading-[0.95] max-w-5xl">
-          {h1Lead} <span className="text-[#10B981]">{h1Accent}</span>
+          {h1Lead} <span className="text-gradient-brand">{h1Accent}</span>
         </h1>
         <div className="mt-8 max-w-3xl flex flex-col gap-5">
           {page.intro.map((paragraph, index) => (
@@ -63,7 +63,7 @@ export default function ServicePage({ slug: slugProp }) {
       </div>
 
       {/* What's included */}
-      <div className="bg-[#F0FDF4] rounded-none md:rounded-none p-8 sm:p-12 md:p-16 mb-20 md:mb-28">
+      <div className="bg-[#F0FDF4] rounded-[28px] md:rounded-[36px] p-8 sm:p-12 md:p-16 mb-20 md:mb-28 card-soft-shadow">
         <h2 className="text-[#064E3B] font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.05] mb-10">
           What&apos;s included
         </h2>
@@ -72,7 +72,7 @@ export default function ServicePage({ slug: slugProp }) {
             <li key={index} className="flex items-start gap-3.5">
               <span
                 aria-hidden="true"
-                className="mt-0.5 shrink-0 w-6 h-6 rounded-none bg-[#10B981] text-white flex items-center justify-center text-sm font-bold"
+                className="mt-0.5 shrink-0 w-6 h-6 rounded-full bg-[#10B981] text-white flex items-center justify-center text-sm font-bold"
               >
                 ✓
               </span>
@@ -104,7 +104,7 @@ export default function ServicePage({ slug: slugProp }) {
             <Link
               key={service.slug}
               to={service.path}
-              className="group block bg-white border border-[#064E3B]/15 rounded-none p-8 sm:p-10 transition-all duration-300"
+              className="group block bg-white border border-[#064E3B]/15 rounded-[28px] p-8 sm:p-10 card-soft-shadow transition-all duration-300 hover:-translate-y-1.5 hover:ring-2 hover:ring-[#10B981]/50"
             >
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#10B981] mb-2 block">
                 {service.eyebrow}
@@ -121,7 +121,7 @@ export default function ServicePage({ slug: slugProp }) {
       </div>
 
       {/* CTA */}
-      <div className="bg-[#064E3B] rounded-none md:rounded-none p-8 sm:p-12 md:p-16 flex flex-col gap-8">
+      <div className="bg-gradient-to-br from-[#064E3B] via-[#065F46] to-[#10B981] rounded-[28px] md:rounded-[36px] p-8 sm:p-12 md:p-16 flex flex-col gap-8 glow-emerald">
         <h2 className="text-white font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.05] max-w-3xl">
           Ready to turn attention into revenue?
         </h2>

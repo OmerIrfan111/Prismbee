@@ -73,7 +73,7 @@ export default function HomeServices() {
           return (
             <div
               key={index}
-              className={`p-8 sm:p-10 md:p-12 rounded-none md:rounded-none ${service.color} flex flex-col justify-between min-h-[380px] transition-all duration-300`}
+              className={`p-8 sm:p-10 md:p-12 rounded-[28px] md:rounded-[36px] ${service.color} flex flex-col justify-between min-h-[380px] card-soft-shadow transition-all duration-300 hover:-translate-y-1.5 hover:ring-2 hover:ring-[#10B981]/50`}
             >
               <div>
                 <div className="flex items-center justify-between gap-4 mb-6">
@@ -85,7 +85,7 @@ export default function HomeServices() {
                     {service.num}.
                   </span>
                   <span
-                    className={`text-xs font-bold tracking-tight px-3 py-1 rounded-none ${
+                    className={`text-xs font-bold tracking-tight px-3 py-1 rounded-full ${
                       isDark
                         ? 'bg-white/10 text-[#A7F3D0] border border-white/10'
                         : 'bg-white text-[#064E3B]/70 border border-[#A7F3D0]/60'
@@ -117,7 +117,7 @@ export default function HomeServices() {
                   {service.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className={`text-xs font-semibold px-3 py-1 rounded-none ${
+                      className={`text-xs font-semibold px-3 py-1 rounded-full ${
                         isDark ? 'bg-white/10 text-white/90' : 'bg-[#064E3B]/5 text-[#064E3B]'
                       }`}
                     >
