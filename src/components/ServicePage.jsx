@@ -125,6 +125,9 @@ export default function ServicePage({ slug: slugProp }) {
         <h2 className="text-white font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.05] max-w-3xl">
           Ready to turn attention into revenue?
         </h2>
+        <p className="text-[#A7F3D0] font-bold uppercase tracking-[0.15em] text-xs sm:text-sm">
+          Launch offer: 40% off your first month on every package
+        </p>
         <p className="text-white/80 font-medium text-lg sm:text-xl leading-relaxed tracking-tight max-w-2xl">
           Tell us about your brand and goals. We will come back with a clear scope — deliverables,
           timeline, and revisions agreed in writing before anything starts.
