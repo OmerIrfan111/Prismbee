@@ -42,7 +42,7 @@ export default function FooterCTA() {
         <div className="reveal-cta-card opacity-0 translate-y-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [&.is-revealed]:opacity-100 [&.is-revealed]:translate-y-0">
           <Link
             to="/why-prismbee"
-            className="group flex flex-col justify-between p-8 sm:p-12 md:p-16 rounded-[24px] md:rounded-[32px] bg-[#064E3B] text-white min-h-[380px] md:min-h-[460px] transition-transform duration-300 hover:scale-[1.01]"
+            className="group flex flex-col justify-between p-8 sm:p-12 md:p-16 rounded-[24px] md:rounded-[32px] bg-gradient-to-br from-[#064E3B] via-[#065F46] to-[#10B981] text-white min-h-[380px] md:min-h-[460px] glow-emerald transition-all duration-300 hover:-translate-y-1.5"
           >
             <div className="flex flex-col gap-6">
               <span className="text-[#A7F3D0] font-bold text-lg md:text-xl tracking-tight">
@@ -65,7 +65,7 @@ export default function FooterCTA() {
         <div className="reveal-cta-card opacity-0 translate-y-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [&.is-revealed]:opacity-100 [&.is-revealed]:translate-y-0">
           <Link
             to="/contact"
-            className="group flex flex-col justify-between p-8 sm:p-12 md:p-16 rounded-[24px] md:rounded-[32px] bg-[#F0FDF4] text-[#064E3B] border border-[#A7F3D0]/60 min-h-[380px] md:min-h-[460px] transition-transform duration-300 hover:scale-[1.01]"
+            className="group flex flex-col justify-between p-8 sm:p-12 md:p-16 rounded-[24px] md:rounded-[32px] bg-gradient-to-br from-[#F0FDF4] via-[#F0FDF4] to-white text-[#064E3B] border border-[#A7F3D0]/60 min-h-[380px] md:min-h-[460px] card-soft-shadow transition-all duration-300 hover:-translate-y-1.5 hover:ring-2 hover:ring-[#10B981]/40"
           >
             <div className="flex flex-col gap-6">
               <span className="text-[#064E3B]/70 font-bold text-lg md:text-xl tracking-tight">

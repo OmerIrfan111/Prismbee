@@ -23,6 +23,10 @@ export default function ServicePage({ slug: slugProp }) {
 
   const otherServices = servicePages.filter((service) => service.slug !== page.slug);
 
+  const h1Words = page.h1.split(' ');
+  const h1Lead = h1Words.slice(0, -1).join(' ');
+  const h1Accent = h1Words[h1Words.length - 1];
+
   return (
     <section className="w-full min-h-screen pt-36 pb-24 px-6 md:px-12 max-w-[1600px] mx-auto bg-white">
       <SEO title={page.title} description={page.description} canonical={page.canonical} />
@@ -33,7 +37,7 @@ export default function ServicePage({ slug: slugProp }) {
           {page.eyebrow}
         </span>
         <h1 className="text-[#064E3B] font-extrabold text-[clamp(2.6rem,6.5vw,5.5rem)] tracking-[-0.04em] leading-[0.95] max-w-5xl">
-          {page.h1}
+          {h1Lead} <span className="text-gradient-brand">{h1Accent}</span>
         </h1>
         <div className="mt-8 max-w-3xl flex flex-col gap-5">
           {page.intro.map((paragraph, index) => (
@@ -59,7 +63,7 @@ export default function ServicePage({ slug: slugProp }) {
       </div>
 
       {/* What's included */}
-      <div className="bg-[#F0FDF4] rounded-[28px] md:rounded-[36px] p-8 sm:p-12 md:p-16 mb-20 md:mb-28">
+      <div className="bg-[#F0FDF4] rounded-[28px] md:rounded-[36px] p-8 sm:p-12 md:p-16 mb-20 md:mb-28 card-soft-shadow">
         <h2 className="text-[#064E3B] font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.05] mb-10">
           What&apos;s included
         </h2>
@@ -79,8 +83,9 @@ export default function ServicePage({ slug: slugProp }) {
           ))}
         </ul>
         <p className="mt-10 text-[#064E3B]/70 font-medium text-base sm:text-lg leading-relaxed tracking-tight max-w-3xl">
-          Prismbee packages — Starter, Growth, and Authority — are priced on custom scope.
-          Your exact deliverables are agreed in writing before work starts.
+          Prismbee packages are Starter ($490/month), Growth ($990/month), and Authority
+          ($1,990/month), with 40% off your first month. Your exact deliverables are agreed in
+          writing before work starts.
         </p>
       </div>
 
@@ -99,7 +104,7 @@ export default function ServicePage({ slug: slugProp }) {
             <Link
               key={service.slug}
               to={service.path}
-              className="group block bg-white border border-[#064E3B]/15 rounded-[28px] p-8 sm:p-10 transition-transform duration-300 hover:scale-[1.01]"
+              className="group block bg-white border border-[#064E3B]/15 rounded-[28px] p-8 sm:p-10 card-soft-shadow transition-all duration-300 hover:-translate-y-1.5 hover:ring-2 hover:ring-[#10B981]/50"
             >
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#10B981] mb-2 block">
                 {service.eyebrow}
@@ -116,7 +121,7 @@ export default function ServicePage({ slug: slugProp }) {
       </div>
 
       {/* CTA */}
-      <div className="bg-[#064E3B] rounded-[28px] md:rounded-[36px] p-8 sm:p-12 md:p-16 flex flex-col gap-8">
+      <div className="bg-gradient-to-br from-[#064E3B] via-[#065F46] to-[#10B981] rounded-[28px] md:rounded-[36px] p-8 sm:p-12 md:p-16 flex flex-col gap-8 glow-emerald">
         <h2 className="text-white font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.05] max-w-3xl">
           Ready to turn attention into revenue?
         </h2>

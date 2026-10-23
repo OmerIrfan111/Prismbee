@@ -73,7 +73,7 @@ export default function HomeServices() {
           return (
             <div
               key={index}
-              className={`p-8 sm:p-10 md:p-12 rounded-[28px] md:rounded-[36px] ${service.color} flex flex-col justify-between min-h-[380px] transition-transform duration-300 hover:scale-[1.01] shadow-sm`}
+              className={`p-8 sm:p-10 md:p-12 rounded-[28px] md:rounded-[36px] ${service.color} flex flex-col justify-between min-h-[380px] card-soft-shadow transition-all duration-300 hover:-translate-y-1.5 hover:ring-2 hover:ring-[#10B981]/50`}
             >
               <div>
                 <div className="flex items-center justify-between gap-4 mb-6">

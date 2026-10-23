@@ -44,11 +44,28 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/90 backdrop-blur-md py-3 shadow-[0_2px_20px_rgba(6,78,59,0.06)]'
-          : 'bg-transparent py-5 lg:py-6'
+          ? 'bg-white/90 backdrop-blur-md shadow-[0_2px_20px_rgba(6,78,59,0.06)]'
+          : ''
       }`}
     >
-      <div className="w-full px-6 md:px-12 max-w-[1600px] mx-auto flex items-center justify-between">
+      {/* Launch offer announcement bar */}
+      <div className="bg-gradient-to-r from-[#064E3B] via-[#0A6B4F] to-[#10B981] text-white">
+        <p className="w-full px-6 md:px-12 max-w-[1600px] mx-auto py-2 text-center text-xs sm:text-[13px] font-semibold tracking-tight">
+          Launch offer: 40% off your first month on every Prismbee package
+          <Link
+            to="/packages"
+            className="ml-2 font-bold underline underline-offset-2 decoration-[#A7F3D0] hover:text-[#A7F3D0] transition-colors"
+          >
+            See packages
+          </Link>
+        </p>
+      </div>
+
+      <div
+        className={`w-full px-6 md:px-12 max-w-[1600px] mx-auto flex items-center justify-between transition-all duration-300 ${
+          isScrolled ? 'py-3' : 'py-5 lg:py-6'
+        }`}
+      >
         {/* Left: Brand Logo & Wordmark */}
         <Link
           to="/"
@@ -114,7 +131,7 @@ export default function Navbar() {
             ? 'opacity-100 pointer-events-auto translate-y-0'
             : 'opacity-0 pointer-events-none -translate-y-4'
         }`}
-        style={{ top: '64px', height: 'calc(100vh - 64px)' }}
+        style={{ top: '108px', height: 'calc(100vh - 108px)' }}
       >
         <nav className="flex flex-col gap-6 pt-4">
           <Link

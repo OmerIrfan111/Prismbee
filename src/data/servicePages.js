@@ -7,10 +7,14 @@
  *  - scripts/prerender.js (injects the same copy as crawlable static HTML,
  *    including the full FAQ text, for non-JavaScript crawlers and AI bots)
  *
- * Truth rule: Prismbee publishes no prices, no turnaround times, and no
- * revision counts. Packages are Starter / Growth / Authority, all priced
- * "Custom Scope". FAQ answers on pricing, timelines, and revisions say
- * exactly that — terms are agreed in writing in the project scope first.
+ * Truth rule (updated 2026-10-23, owner decisions): package prices and
+ * turnaround times are now published. Packages are Starter $490/month,
+ * Growth $990/month, and Authority $1,990/month, with 40% off the first
+ * month for new clients. Video edits typically turn around in 1 to 2
+ * business days; standard landing pages and starter website builds in
+ * 3 to 4 business days; larger custom builds get a timeline confirmed in
+ * writing in the scope. Revision counts are still agreed in writing in
+ * the project scope first — no revision numbers are published.
  */
 
 export const servicePages = [
@@ -45,7 +49,7 @@ export const servicePages = [
       {
         question: 'How fast is the turnaround on video edits?',
         answer:
-          'We do not publish a fixed turnaround time, because honest timelines depend on video length, volume, and complexity. Your delivery schedule is agreed in writing in the project scope before work starts, so you know exactly when to expect each edit. For ongoing content, edits are produced to an agreed recurring schedule alongside your content calendar.'
+          'Typical turnaround on video edits is 1 to 2 business days, depending on video length, volume, and complexity. Your delivery schedule is confirmed in writing in the project scope before work starts, so you know exactly when to expect each edit. For ongoing content, edits are produced to an agreed recurring schedule alongside your content calendar.'
       },
       {
         question: 'How do revisions work?',
@@ -55,7 +59,7 @@ export const servicePages = [
       {
         question: 'How much do your video editing services cost?',
         answer:
-          'Pricing is custom scope: we do not publish a public price list, because the right price depends on your video volume, formats, and production level. Video editing is available on its own or inside our Starter, Growth, and Authority packages. After a short discovery call we send you a written quote with the full scope, so you know exactly what is included before you commit.'
+          'Our packages are published: Starter is $490/month, Growth is $990/month, and Authority is $1,990/month — and new clients get 40% off the first month. Video content production is included in the Growth and Authority packages, and video editing can also be scoped on its own; the right fit depends on your video volume, formats, and production level. After a short discovery call we confirm your exact scope in writing, so you know exactly what is included before you commit.'
       },
       {
         question: 'Who are your video editing services for?',
@@ -101,7 +105,7 @@ export const servicePages = [
       {
         question: 'How far in advance is content planned, and how fast do we launch?',
         answer:
-          'Social content runs on monthly calendars, planned and produced in advance so your channels publish consistently. We do not publish a fixed launch or turnaround time, because the schedule depends on your platforms, content volume, and approvals. Your start date and posting cadence are agreed in writing in the project scope before work starts.'
+          'Social content runs on a planned monthly calendar: each month\'s content is planned in advance so your channels publish consistently, and new content batches are planned monthly. Edits within those batches are turned around in 1 to 2 business days. Your start date and posting cadence are agreed in writing in the project scope before work starts.'
       },
       {
         question: 'How do revisions and approvals work for social content?',
@@ -111,7 +115,7 @@ export const servicePages = [
       {
         question: 'How much does social media management cost?',
         answer:
-          'Pricing is custom scope and we do not publish a public price list. Management is sold in three packages: Starter covers 1 platform, Growth covers 3 platforms with Reels and video content production, and Authority covers full multi-platform management with a dedicated senior account manager. After a short discovery call you receive a written quote showing exactly what your package includes.'
+          'Our packages are published: Starter is $490/month and covers 1 platform, Growth is $990/month and covers 3 platforms with Reels and video content production, and Authority is $1,990/month for full multi-platform management with a dedicated senior account manager. New clients get 40% off the first month. After a short discovery call you receive written confirmation of exactly what your package includes.'
       },
       {
         question: 'Who are your social media management services for?',
@@ -157,7 +161,7 @@ export const servicePages = [
       {
         question: 'How long does a website take to build?',
         answer:
-          'We do not publish a fixed build time, because timelines depend on the size of the site and the features you need. Websites run in phases — discovery, strategy, then build — and your timeline for each phase is agreed in writing in the project scope before work starts, so you always know what is happening and when to expect delivery.'
+          'Standard landing pages and starter website builds typically take 3 to 4 business days. Larger custom builds — more pages, custom functionality, or a full web application — get a timeline confirmed in writing in the project scope before work starts. Websites run in phases — discovery, strategy, then build — so you always know what phase your site is in and when to expect delivery.'
       },
       {
         question: 'How do revisions work during a website build?',
@@ -167,7 +171,7 @@ export const servicePages = [
       {
         question: 'How much does a website cost?',
         answer:
-          'Pricing is custom scope: we do not publish public prices, because the cost depends on your pages, features, and whether you need landing pages or a custom web application. Websites are available inside our Starter, Growth, and Authority packages. After a short discovery call you receive a written quote with the full scope and deliverables before you commit to anything.'
+          'Our packages are published: Starter is $490/month and includes a high-converting 5-page web platform, Growth is $990/month with a web platform plus dedicated landing pages, and Authority is $1,990/month for a custom web application or platform. New clients get 40% off the first month. The right package depends on your pages and features; after a short discovery call you receive the full scope and deliverables in writing before you commit to anything.'
       },
       {
         question: 'Who are your web design services for?',

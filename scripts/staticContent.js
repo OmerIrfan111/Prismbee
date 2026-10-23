@@ -9,9 +9,11 @@
  * crawlers get the real page copy.
  *
  * All copy here comes from the site's own pages/components, or from
- * src/data/servicePages.js for the dedicated service pages. Nothing is
- * invented: no prices (packages are Custom Scope), no turnaround times,
- * no revision counts, no results claims.
+ * src/data/servicePages.js for the dedicated service pages. Prices and
+ * turnaround times are the owner's published figures (updated
+ * 2026-10-23): packages $490/$990/$1,990 per month with 40% off the
+ * first month, video edits in 1 to 2 business days, standard website
+ * builds in 3 to 4 business days. No revision counts, no results claims.
  */
 import { servicePages } from '../src/data/servicePages.js';
 
@@ -68,9 +70,9 @@ export function renderStaticBlock(content) {
 /** Static content for the pre-existing pages. Keyed by dist path ('' = home). */
 export const staticContent = {
   '': {
-    h1: 'Prismbee — Digital Growth Agency',
+    h1: 'Prismbee — Web Agency & Creative Agency for Video, Content and Growth',
     intro: [
-      'Prismbee is an elite digital growth agency combining viral organic social media content, cinematic video production, and high-converting web design to scale modern brands.',
+      'Prismbee is a web agency and creative agency combining viral organic social media content, cinematic video production, and high-converting web design to scale modern brands.',
       'We help brands in the United States, the United Kingdom, Canada, and Europe turn attention into revenue through three core service lines — video editing, social media content and management, and web design and development — supported by brand scaling and identity systems.'
     ],
     bullets: [
@@ -92,7 +94,7 @@ export const staticContent = {
       {
         label: 'Growth Packages',
         href: '/packages',
-        text: 'Starter, Growth, and Authority packages, all priced on custom scope.'
+        text: 'Starter $490/month, Growth $990/month, and Authority $1,990/month, with 40% off your first month. Video edits in 1–2 business days; standard website builds in 3–4 business days.'
       },
       {
         label: 'How It Works',
@@ -185,19 +187,19 @@ export const staticContent = {
       {
         label: 'Growth Packages',
         href: '/packages',
-        text: 'Starter, Growth, and Authority, priced on custom scope.'
+        text: 'Starter $490/month, Growth $990/month, and Authority $1,990/month, with 40% off your first month.'
       }
     ]
   },
   packages: {
     h1: 'Digital Growth Packages & Pricing',
     intro: [
-      'Explore flexible growth packages tailored to your brand stage. All Prismbee packages are priced on custom scope — there is no public price list. After a short discovery call you receive a written quote with deliverables, timelines, and revision rounds agreed before work starts.'
+      'Explore flexible growth packages tailored to your brand stage. Launch offer: 40% off your first month on every package for new clients. Video edits typically turn around in 1–2 business days and standard website builds in 3–4 business days; exact deliverables and revision rounds are agreed in writing before work starts.'
     ],
     bullets: [
-      { text: 'Starter — brand identity setup and guidelines, 1 platform organic social management, a high-converting 5-page web platform, and a monthly performance analytics report.' },
-      { text: 'Growth — full brand identity design system, 3-platform organic social management, web platform plus dedicated landing pages, Reels and video content production, daily community management and engagement, and a comprehensive monthly growth report.' },
-      { text: 'Authority — premium enterprise brand system, full multi-platform social management, custom web application or platform, studio video production and creative direction, a dedicated senior account manager, and bi-weekly strategic executive sessions.' }
+      { text: 'Starter — $490/month (first month $294 with the 40% launch offer). Brand identity setup and guidelines, 1 platform organic social management, a high-converting 5-page web platform, and a monthly performance analytics report.' },
+      { text: 'Growth — $990/month (first month $594 with the 40% launch offer). Full brand identity design system, 3-platform organic social management, web platform plus dedicated landing pages, Reels and video content production, daily community management and engagement, and a comprehensive monthly growth report.' },
+      { text: 'Authority — $1,990/month (first month $1,194 with the 40% launch offer). Premium enterprise brand system, full multi-platform social management, custom web application or platform, studio video production and creative direction, a dedicated senior account manager, and bi-weekly strategic executive sessions.' }
     ]
   },
   contact: {
@@ -235,6 +237,6 @@ for (const page of servicePages) {
     bullets: page.included.map((text) => ({ text })),
     faqs: page.faqs,
     outro:
-      'Packages are Starter, Growth, and Authority, all priced on custom scope. Book a free call on the Prismbee contact page to get started.'
+      'Packages are Starter ($490/month), Growth ($990/month), and Authority ($1,990/month), with 40% off your first month. Book a free call on the Prismbee contact page to get started.'
   };
 }

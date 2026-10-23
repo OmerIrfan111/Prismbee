@@ -10,14 +10,15 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Digital Growth Agency | Video, Content & Web | Prismbee"
-        description="Prismbee is a digital growth agency delivering viral content, video production and high-converting websites to scale your brand. Book a free call."
+        title="Web & Creative Agency for Video, Content and Growth | Prismbee"
+        description="Prismbee is a web agency and creative agency for brands in the US, UK, Canada and Europe: video editing, social media management and web design that converts."
         canonical="https://www.prismbee.site/"
       />
       <Hero
         eyebrow="Digital Growth Agency"
         headline="Attention."
-        subtitle="Prismbee is an elite digital growth agency combining viral organic social media content, cinematic video production, and high-converting web design to scale modern brands."
+        subtitle="Prismbee is an elite digital growth agency combining viral organic social media content, cinematic video production, and high-converting web design to scale modern brands. A web agency and creative agency in one team."
+        trustStrip={true}
       />
       <SocialProof />
       <HomeServices />

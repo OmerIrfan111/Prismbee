@@ -47,9 +47,9 @@ const pages = [
   },
   {
     path: 'packages',
-    title: 'Digital Growth Packages & Pricing Scopes | Prismbee',
+    title: 'Digital Growth Packages & Pricing | Prismbee',
     description:
-      'Explore flexible growth packages tailored to your brand stage. From foundational social & web to enterprise video and brand scaling, see Prismbee pricing.',
+      'Prismbee packages: Starter $490/month, Growth $990/month, Authority $1,990/month, with 40% off your first month. Video edits in 1–2 business days, standard website builds in 3–4 business days.',
     canonical: 'https://www.prismbee.site/packages'
   },
   {

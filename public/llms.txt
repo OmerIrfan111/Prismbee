@@ -13,9 +13,19 @@ Supplementary service: Meta ads management is available as an add-on to social m
 
 ## Packages
 
-Prismbee works in three packages — Starter, Growth, and Authority. All packages are priced on custom scope; there is no public price list. A written quote with deliverables, timelines, and revision rounds is provided after a discovery call.
+Prismbee works in three monthly packages. Launch offer: 40% off the first month on every package for new clients. Prices in USD.
 
-- [Packages](https://www.prismbee.site/packages): Starter (brand identity setup, 1 platform organic social management, 5-page web platform, monthly analytics report), Growth (full brand identity system, 3-platform social management, web platform plus landing pages, Reels and video production, daily community management), Authority (premium brand system, full multi-platform management, custom web application, studio video production, dedicated senior account manager).
+- Starter: $490/month (first month $294 with the 40% launch offer). Brand identity setup and guidelines, 1 platform organic social management, high-converting 5-page web platform, monthly performance analytics report.
+- Growth: $990/month (first month $594 with the 40% launch offer). Full brand identity design system, 3-platform organic social management, web platform plus dedicated landing pages, Reels and video content production, daily community management and engagement, comprehensive monthly growth report.
+- Authority: $1,990/month (first month $1,194 with the 40% launch offer). Premium enterprise brand system, full multi-platform social management, custom web application or platform, studio video production and creative direction, dedicated senior account manager, bi-weekly strategic executive sessions.
+
+- [Packages](https://www.prismbee.site/packages): Full package details and pricing. Exact deliverables and revision rounds are confirmed in writing in the project scope before work starts.
+
+## Turnaround
+
+- Video edits: typical turnaround of 1 to 2 business days.
+- Websites: standard landing pages and starter website builds take 3 to 4 business days; larger custom builds get a timeline confirmed in writing in the project scope before work starts.
+- Social media content: runs on a planned monthly calendar, with edits turned around in 1 to 2 business days.
 
 ## Process
 

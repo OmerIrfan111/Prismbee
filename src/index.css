@@ -13,10 +13,41 @@
   --font-body: "Inter Tight", "Inter", sans-serif;
 }
 
+/* Brand selection + slim brand scrollbar */
+::selection {
+  background-color: #A7F3D0;
+  color: #064E3B;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #10B981 #F0FDF4;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F0FDF4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #10B981, #064E3B);
+  border-radius: 9999px;
+  border: 2px solid #F0FDF4;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #34D399, #10B981);
+}
+
 /* Base resets & typography */
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 96px;
     background-color: #FFFFFF;
     color: #064E3B;
   }
@@ -42,9 +73,34 @@
   }
 }
 
+/* Premium brand utilities */
+@layer utilities {
+  /* Gradient text in brand colours */
+  .text-gradient-brand {
+    background-image: linear-gradient(94deg, #064E3B 5%, #10B981 55%, #34D399 95%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Soft premium card shadow */
+  .card-soft-shadow {
+    box-shadow:
+      0 24px 48px -20px rgba(6, 78, 59, 0.22),
+      0 6px 16px -8px rgba(6, 78, 59, 0.1);
+  }
+
+  /* Emerald glow for featured panels */
+  .glow-emerald {
+    box-shadow:
+      0 30px 70px -22px rgba(16, 185, 129, 0.5),
+      0 10px 24px -12px rgba(6, 78, 59, 0.35);
+  }
+}
+
 /* Huge Inc style components */
 @layer components {
-  /* Minimal pill CTA */
+  /* Premium pill CTA: deep green to emerald gradient, glow, hover lift */
   .pill-cta {
     display: inline-flex;
     align-items: center;
@@ -55,13 +111,19 @@
     font-weight: 600;
     line-height: 1;
     letter-spacing: -0.02em;
-    background-color: #064E3B;
+    background-image: linear-gradient(135deg, #064E3B 0%, #0A6B4F 55%, #10B981 135%);
     color: #FFFFFF;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow:
+      0 12px 28px -10px rgba(16, 185, 129, 0.55),
+      0 4px 12px -6px rgba(6, 78, 59, 0.35);
+    transition: box-shadow 0.25s ease, transform 0.25s ease, filter 0.25s ease;
   }
   .pill-cta:hover {
-    background-color: #04382A;
-    transform: scale(1.02);
+    transform: translateY(-2px);
+    filter: brightness(1.07);
+    box-shadow:
+      0 18px 36px -10px rgba(16, 185, 129, 0.65),
+      0 6px 16px -6px rgba(6, 78, 59, 0.4);
   }
 
   .pill-cta-inverted {
@@ -74,13 +136,19 @@
     font-weight: 600;
     line-height: 1;
     letter-spacing: -0.02em;
-    background-color: #FFFFFF;
+    background-image: linear-gradient(180deg, #FFFFFF 0%, #F0FDF4 100%);
     color: #064E3B;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow:
+      0 12px 28px -12px rgba(6, 78, 59, 0.45),
+      0 4px 10px -6px rgba(6, 78, 59, 0.25);
+    transition: box-shadow 0.25s ease, transform 0.25s ease, background-image 0.25s ease;
   }
   .pill-cta-inverted:hover {
-    background-color: #A7F3D0;
-    transform: scale(1.02);
+    transform: translateY(-2px);
+    background-image: linear-gradient(180deg, #D1FAE5 0%, #A7F3D0 100%);
+    box-shadow:
+      0 18px 36px -12px rgba(6, 78, 59, 0.5),
+      0 6px 16px -6px rgba(6, 78, 59, 0.3);
   }
 
   /* Duplicate title scroll effect for cards */
