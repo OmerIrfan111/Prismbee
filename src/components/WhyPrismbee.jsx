@@ -126,13 +126,13 @@ export default function WhyPrismbee() {
             key={index}
             className="reveal-why-card opacity-0 translate-y-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [&.is-revealed]:opacity-100 [&.is-revealed]:translate-y-0"
           >
-            <div className="p-8 sm:p-10 md:p-12 rounded-[28px] md:rounded-[36px] bg-[#F0FDF4] border border-[#A7F3D0]/60 flex flex-col justify-between min-h-[380px] md:min-h-[440px] transition-transform duration-300 hover:scale-[1.01]">
+            <div className="p-8 sm:p-10 md:p-12 rounded-none md:rounded-none bg-[#F0FDF4] border border-[#A7F3D0]/60 flex flex-col justify-between min-h-[380px] md:min-h-[440px] transition-transform duration-300 hover:scale-[1.01]">
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between">
                   <span className="font-extrabold text-2xl text-[#10B981] tracking-tight">
                     {pillar.num}.
                   </span>
-                  <span className="text-xs font-bold text-[#064E3B]/60 tracking-tight bg-white px-3 py-1 rounded-full border border-[#A7F3D0]/40">
+                  <span className="text-xs font-bold text-[#064E3B]/60 tracking-tight bg-white px-3 py-1 rounded-none border border-[#A7F3D0]/40">
                     {pillar.tag}
                   </span>
                 </div>
@@ -165,7 +165,7 @@ export default function WhyPrismbee() {
               key={index}
               className="reveal-why-card opacity-0 translate-y-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [&.is-revealed]:opacity-100 [&.is-revealed]:translate-y-0"
             >
-              <div className="p-8 sm:p-10 rounded-[24px] md:rounded-[32px] bg-white border border-[#064E3B]/15 hover:border-[#10B981] transition-colors flex flex-col justify-between min-h-[260px]">
+              <div className="p-8 sm:p-10 rounded-none md:rounded-none bg-white border border-[#064E3B]/15 hover:border-[#10B981] transition-colors flex flex-col justify-between min-h-[260px]">
                 <div>
                   <span className="text-xs font-semibold text-[#10B981] uppercase tracking-wider block mb-2">
                     {item.tag}
@@ -200,7 +200,7 @@ export default function WhyPrismbee() {
               key={idx}
               className="reveal-why-card opacity-0 translate-y-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [&.is-revealed]:opacity-100 [&.is-revealed]:translate-y-0"
             >
-              <div className="p-6 sm:p-8 rounded-[20px] bg-[#F0FDF4] border border-[#A7F3D0]/40 flex flex-col gap-3 h-full">
+              <div className="p-6 sm:p-8 rounded-none bg-[#F0FDF4] border border-[#A7F3D0]/40 flex flex-col gap-3 h-full">
                 <span className="text-sm font-bold text-[#10B981] tracking-tight">
                   0{idx + 1}.
                 </span>
@@ -217,7 +217,7 @@ export default function WhyPrismbee() {
       </div>
 
       {/* Leadership Mandate Banner */}
-      <div className="p-8 sm:p-14 md:p-20 rounded-[28px] md:rounded-[36px] bg-[#064E3B] text-white flex flex-col gap-8">
+      <div className="p-8 sm:p-14 md:p-20 rounded-none md:rounded-none bg-[#064E3B] text-white flex flex-col gap-8">
         <span className="text-[#A7F3D0] font-bold text-lg md:text-xl tracking-tight">
           Our Mandate.
         </span>

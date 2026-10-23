@@ -102,7 +102,7 @@ export default function Footer() {
               </p>
             ) : (
               <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
-                <div className="flex items-center rounded-full bg-white/10 border border-white/20 px-5 py-2.5 focus-within:border-[#10B981] transition-colors">
+                <div className="flex items-center rounded-none bg-white/10 border border-white/20 px-5 py-2.5 focus-within:border-[#10B981] transition-colors">
                   <input
                     type="email"
                     required

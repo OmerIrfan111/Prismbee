@@ -32,7 +32,7 @@ export default function SocialProof() {
               <span className="font-bold text-xs sm:text-sm md:text-[15px] tracking-tight text-[#064E3B] whitespace-nowrap hover:text-[#10B981] transition-colors">
                 {skill}<span className="text-[#10B981]">.</span>
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#A7F3D0] shrink-0 select-none" />
+              <span className="w-1.5 h-1.5 rounded-none bg-[#A7F3D0] shrink-0 select-none" />
             </div>
           ))}
         </div>

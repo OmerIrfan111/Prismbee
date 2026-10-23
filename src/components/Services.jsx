@@ -103,7 +103,7 @@ export default function Services() {
               className="reveal-service-card opacity-0 translate-y-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [&.is-revealed]:opacity-100 [&.is-revealed]:translate-y-0"
             >
               <div
-                className={`p-8 sm:p-12 md:p-16 rounded-[28px] md:rounded-[36px] ${service.color} flex flex-col justify-between min-h-[420px] card-soft-shadow transition-all duration-300 hover:-translate-y-1.5 hover:ring-2 hover:ring-[#10B981]/50`}
+                className={`p-8 sm:p-12 md:p-16 rounded-none md:rounded-none ${service.color} flex flex-col justify-between min-h-[420px] transition-all duration-300`}
               >
                 <div className="flex flex-col gap-6 max-w-4xl">
                   <span
@@ -134,7 +134,7 @@ export default function Services() {
                     {service.tags.map((tag, i) => (
                       <span
                         key={i}
-                        className={`text-xs sm:text-sm font-semibold px-4 py-2 rounded-full tracking-tight ${
+                        className={`text-xs sm:text-sm font-semibold px-4 py-2 rounded-none tracking-tight ${
                           isDark
                             ? 'bg-white/10 text-white'
                             : 'bg-[#064E3B]/5 text-[#064E3B]'

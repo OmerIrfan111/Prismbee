@@ -99,14 +99,14 @@ export default function Pricing() {
       {/* Pale green backdrop accents */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div
-          className="absolute -top-40 right-[-12%] w-[640px] h-[640px] rounded-full"
+          className="absolute -top-40 right-[-12%] w-[640px] h-[640px] rounded-none"
           style={{
             background:
               'radial-gradient(circle, rgba(16,185,129,0.14) 0%, rgba(16,185,129,0) 65%)'
           }}
         />
         <div
-          className="absolute bottom-[-25%] left-[-10%] w-[560px] h-[560px] rounded-full"
+          className="absolute bottom-[-25%] left-[-10%] w-[560px] h-[560px] rounded-none"
           style={{
             background:
               'radial-gradient(circle, rgba(167,243,208,0.35) 0%, rgba(167,243,208,0) 68%)'
@@ -132,7 +132,7 @@ export default function Pricing() {
           <p className="mt-6 text-[#064E3B] font-semibold text-[clamp(1.15rem,2.2vw,1.6rem)] leading-snug tracking-tight max-w-[580px]">
             Flexible packages, clear results. Every engagement is scoped to your brand's exact growth stage.
           </p>
-          <span className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#064E3B] to-[#10B981] text-white text-sm font-bold tracking-tight px-5 py-2.5 shadow-[0_12px_28px_-10px_rgba(16,185,129,0.6)]">
+          <span className="mt-8 inline-flex items-center gap-2 rounded-none bg-[#064E3B] text-white text-sm font-bold tracking-tight px-5 py-2.5">
             Launch offer: 40% off your first month on every package
           </span>
         </div>
@@ -147,10 +147,10 @@ export default function Pricing() {
                 className="reveal-price-card opacity-0 translate-y-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [&.is-revealed]:opacity-100 [&.is-revealed]:translate-y-0 flex"
               >
                 <div
-                  className={`w-full p-8 sm:p-10 md:p-12 rounded-[28px] md:rounded-[36px] flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 ${
+                  className={`w-full p-8 sm:p-10 md:p-12 rounded-none md:rounded-none flex flex-col justify-between transition-all duration-300 ${
                     isFeatured
-                      ? 'bg-gradient-to-br from-[#064E3B] via-[#065F46] to-[#0A7A5C] text-white ring-4 ring-[#10B981]/25 shadow-[0_36px_80px_-24px_rgba(6,78,59,0.55)] lg:scale-[1.03]'
-                      : 'bg-white text-[#064E3B] border border-[#A7F3D0]/80 card-soft-shadow hover:ring-2 hover:ring-[#10B981]/40'
+                      ? 'bg-[#064E3B] text-white'
+                      : 'bg-white text-[#064E3B] border border-[#A7F3D0]/80'
                   }`}
                 >
                   <div>
@@ -159,7 +159,7 @@ export default function Pricing() {
                         {pkg.name}
                       </h2>
                       {pkg.badge && (
-                        <span className="text-xs font-bold tracking-tight px-3 py-1.5 rounded-full bg-gradient-to-r from-[#10B981] to-[#34D399] text-[#064E3B] shadow-[0_8px_20px_-6px_rgba(16,185,129,0.7)]">
+                        <span className="text-xs font-bold tracking-tight px-3 py-1.5 rounded-none bg-[#10B981] text-[#064E3B]">
                           {pkg.badge}
                         </span>
                       )}
@@ -189,7 +189,7 @@ export default function Pricing() {
 
                     {/* First month launch offer */}
                     <div
-                      className={`mt-6 rounded-2xl p-5 ${
+                      className={`mt-6 rounded-none p-5 ${
                         isFeatured
                           ? 'bg-white/10 border border-white/15'
                           : 'bg-[#F0FDF4] border border-[#A7F3D0]/70'
@@ -203,7 +203,7 @@ export default function Pricing() {
                         >
                           First month
                         </span>
-                        <span className="text-[11px] font-extrabold uppercase tracking-wide px-2.5 py-1 rounded-full bg-gradient-to-r from-[#064E3B] to-[#10B981] text-white">
+                        <span className="text-[11px] font-extrabold uppercase tracking-wide px-2.5 py-1 rounded-none bg-[#064E3B] text-white">
                           40% off first month
                         </span>
                       </div>
@@ -241,7 +241,7 @@ export default function Pricing() {
                       {pkg.features.map((feature, i) => (
                         <li key={i} className="flex items-start gap-3">
                           <span
-                            className={`mt-0.5 shrink-0 w-5.5 h-5.5 rounded-full flex items-center justify-center ${
+                            className={`mt-0.5 shrink-0 w-5.5 h-5.5 rounded-none flex items-center justify-center ${
                               isFeatured
                                 ? 'bg-[#10B981] text-white'
                                 : 'bg-[#F0FDF4] text-[#059669] border border-[#A7F3D0]'

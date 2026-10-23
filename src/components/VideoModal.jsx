@@ -50,7 +50,7 @@ export default function VideoModal({ video, isOpen, onClose, onPrev, onNext, cur
       role="dialog"
       aria-modal="true"
       aria-label={video.title}
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-10 bg-black/90 backdrop-blur-xl transition-all duration-300"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-10 bg-black/90 transition-all duration-300"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -58,7 +58,7 @@ export default function VideoModal({ video, isOpen, onClose, onPrev, onNext, cur
       {/* Top Bar: Title, Count, Zoom Toggle & Close Button */}
       <div className="absolute top-4 sm:top-6 left-4 sm:left-8 right-4 sm:right-8 flex items-center justify-between z-20 pointer-events-auto">
         <div className="flex items-center gap-3">
-          <span className="px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-[#10B981]/20 text-[#A7F3D0] border border-[#10B981]/30">
+          <span className="px-3 py-1 rounded-none text-xs font-semibold tracking-wider uppercase bg-[#10B981]/20 text-[#A7F3D0] border border-[#10B981]/30">
             {video.category || '3D Motion'}
           </span>
           <span className="text-white/60 text-xs sm:text-sm font-medium tracking-wide">
@@ -72,7 +72,7 @@ export default function VideoModal({ video, isOpen, onClose, onPrev, onNext, cur
             onClick={() => setIsZoomed((prev) => !prev)}
             aria-label={isZoomed ? "Reset zoom" : "Zoom video slightly"}
             title={isZoomed ? "Zoom: Active (Click to reset)" : "Zoom: Fit (Click to zoom)"}
-            className={`px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 backdrop-blur-md border cursor-pointer flex items-center gap-1.5 shadow-lg ${
+            className={`px-3 py-1.5 rounded-none text-xs font-semibold tracking-wide transition-all duration-200 border cursor-pointer flex items-center gap-1.5 ${
               isZoomed
                 ? 'bg-[#10B981] text-white border-[#10B981]'
                 : 'bg-white/10 hover:bg-white/20 text-white/90 border-white/15'
@@ -92,7 +92,7 @@ export default function VideoModal({ video, isOpen, onClose, onPrev, onNext, cur
           <button
             onClick={onClose}
             aria-label="Close video player"
-            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white flex items-center justify-center transition-all duration-200 backdrop-blur-md border border-white/10 cursor-pointer shadow-lg"
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-none bg-white/10 hover:bg-white/20 active:scale-95 text-white flex items-center justify-center transition-all duration-200 border border-white/10 cursor-pointer"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -109,7 +109,7 @@ export default function VideoModal({ video, isOpen, onClose, onPrev, onNext, cur
             onPrev?.();
           }}
           aria-label="Previous video"
-          className="absolute left-2 sm:left-6 md:left-10 z-20 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white/10 hover:bg-white/25 active:scale-95 text-white flex items-center justify-center transition-all duration-200 backdrop-blur-md border border-white/10 cursor-pointer shadow-xl group"
+          className="absolute left-2 sm:left-6 md:left-10 z-20 w-11 h-11 sm:w-14 sm:h-14 rounded-none bg-white/10 hover:bg-white/25 active:scale-95 text-white flex items-center justify-center transition-all duration-200 border border-white/10 cursor-pointer group"
         >
           <svg
             className="w-6 h-6 sm:w-7 sm:h-7 transition-transform group-hover:-translate-x-0.5"
@@ -125,7 +125,7 @@ export default function VideoModal({ video, isOpen, onClose, onPrev, onNext, cur
 
       {/* Video Content Container */}
       <div className="relative z-10 w-full max-w-4xl flex flex-col items-center max-h-[88vh]">
-        <div className="relative w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl bg-black border border-white/10 flex items-center justify-center max-h-[76vh]">
+        <div className="relative w-full rounded-none md:rounded-none overflow-hidden bg-black border border-white/10 flex items-center justify-center max-h-[76vh]">
           <video
             ref={videoRef}
             src={video.src}
@@ -160,7 +160,7 @@ export default function VideoModal({ video, isOpen, onClose, onPrev, onNext, cur
             onNext?.();
           }}
           aria-label="Next video"
-          className="absolute right-2 sm:right-6 md:right-10 z-20 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white/10 hover:bg-white/25 active:scale-95 text-white flex items-center justify-center transition-all duration-200 backdrop-blur-md border border-white/10 cursor-pointer shadow-xl group"
+          className="absolute right-2 sm:right-6 md:right-10 z-20 w-11 h-11 sm:w-14 sm:h-14 rounded-none bg-white/10 hover:bg-white/25 active:scale-95 text-white flex items-center justify-center transition-all duration-200 border border-white/10 cursor-pointer group"
         >
           <svg
             className="w-6 h-6 sm:w-7 sm:h-7 transition-transform group-hover:translate-x-0.5"
