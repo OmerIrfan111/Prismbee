@@ -1,0 +1,656 @@
+diff --git a/src/index.css b/src/index.css
+--- a/src/index.css
++++ b/src/index.css
+@@ -283,3 +283,188 @@
+   }
+ }
+ 
++
++/* ============================================================
++   LIQUID GLASS SYSTEM (brand: deep green #064E3B, emerald #10B981)
++   Unlayered on purpose: these utilities must win over Tailwind's
++   layered utilities (e.g. a card's bg-white) where applied.
++   ============================================================ */
++
++/* --- Full frosted glass panel (light surfaces) --- */
++.glass {
++  position: relative;
++  background: linear-gradient(135deg, rgba(255, 255, 255, 0.62) 0%, rgba(240, 253, 244, 0.38) 100%);
++  -webkit-backdrop-filter: blur(18px) saturate(1.5);
++  backdrop-filter: blur(18px) saturate(1.5);
++  border: 1px solid rgba(255, 255, 255, 0.65);
++  box-shadow:
++    inset 0 1px 0 rgba(255, 255, 255, 0.8),
++    inset 0 -1px 0 rgba(255, 255, 255, 0.25),
++    0 24px 48px -20px rgba(6, 78, 59, 0.22);
++}
++
++/* --- Full frosted glass panel (dark surfaces, e.g. footer) --- */
++.glass-dark {
++  position: relative;
++  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
++  -webkit-backdrop-filter: blur(18px) saturate(1.3);
++  backdrop-filter: blur(18px) saturate(1.3);
++  border: 1px solid rgba(255, 255, 255, 0.18);
++  box-shadow:
++    inset 0 1px 0 rgba(255, 255, 255, 0.22),
++    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
++    0 24px 48px -20px rgba(0, 0, 0, 0.45);
++}
++
++/* --- Edge-only glass: keeps the card's own background, adds the
++       liquid edge border, inner highlight and sheen on top --- */
++.glass-edge {
++  position: relative;
++  border: 1px solid rgba(255, 255, 255, 0.55);
++  box-shadow:
++    inset 0 1px 0 rgba(255, 255, 255, 0.5),
++    inset 0 -1px 0 rgba(255, 255, 255, 0.12);
++}
++
++/* --- Cursor-following specular sheen --- */
++.glass-sheen {
++  overflow: hidden;
++  --sheen-x: 50%;
++  --sheen-y: 50%;
++}
++.glass-sheen::after {
++  content: '';
++  position: absolute;
++  inset: 0;
++  border-radius: inherit;
++  pointer-events: none;
++  z-index: 2;
++  background: radial-gradient(
++    420px circle at var(--sheen-x) var(--sheen-y),
++    rgba(255, 255, 255, 0.32) 0%,
++    rgba(255, 255, 255, 0.08) 38%,
++    rgba(255, 255, 255, 0) 68%
++  );
++  opacity: 0;
++  transition: opacity 0.35s ease;
++}
++.glass-sheen:hover::after {
++  opacity: 1;
++}
++
++/* --- Tilt state: fast transform response while the cursor moves --- */
++.glass-tilting {
++  transition: transform 0.12s ease-out !important;
++  will-change: transform;
++}
++
++/* --- Frosted glass navbar --- */
++.glass-nav {
++  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(240, 253, 244, 0.62) 100%);
++  -webkit-backdrop-filter: blur(20px) saturate(1.6);
++  backdrop-filter: blur(20px) saturate(1.6);
++  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
++  box-shadow:
++    inset 0 1px 0 rgba(255, 255, 255, 0.75),
++    0 12px 32px -14px rgba(6, 78, 59, 0.22);
++}
++
++/* --- Animated gradient orbs (hero / section backdrops) --- */
++.orb {
++  position: absolute;
++  border-radius: 9999px;
++  filter: blur(70px);
++  -webkit-filter: blur(70px);
++  will-change: transform;
++}
++.orb-a {
++  width: 600px;
++  height: 600px;
++  top: -190px;
++  right: -10%;
++  background: radial-gradient(circle, rgba(16, 185, 129, 0.26) 0%, rgba(16, 185, 129, 0) 65%);
++  animation: orb-drift-a 22s ease-in-out infinite alternate;
++}
++.orb-b {
++  width: 520px;
++  height: 520px;
++  bottom: -28%;
++  left: -8%;
++  background: radial-gradient(circle, rgba(167, 243, 208, 0.5) 0%, rgba(167, 243, 208, 0) 68%);
++  animation: orb-drift-b 27s ease-in-out infinite alternate;
++}
++.orb-c {
++  width: 400px;
++  height: 400px;
++  top: 32%;
++  left: 28%;
++  background: radial-gradient(circle, rgba(52, 211, 153, 0.2) 0%, rgba(52, 211, 153, 0) 70%);
++  animation: orb-drift-c 31s ease-in-out infinite alternate;
++}
++/* Dark-section orb tuning (footer) */
++.orb-tone-dark .orb-a {
++  background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, rgba(16, 185, 129, 0) 65%);
++}
++.orb-tone-dark .orb-b {
++  background: radial-gradient(circle, rgba(52, 211, 153, 0.22) 0%, rgba(52, 211, 153, 0) 68%);
++}
++.orb-tone-dark .orb-c {
++  background: radial-gradient(circle, rgba(167, 243, 208, 0.14) 0%, rgba(167, 243, 208, 0) 70%);
++}
++
++@keyframes orb-drift-a {
++  from { transform: translate(0, 0) scale(1); }
++  to   { transform: translate(-120px, 90px) scale(1.14); }
++}
++@keyframes orb-drift-b {
++  from { transform: translate(0, 0) scale(1.05); }
++  to   { transform: translate(110px, -80px) scale(0.94); }
++}
++@keyframes orb-drift-c {
++  from { transform: translate(0, 0) scale(0.95); }
++  to   { transform: translate(-70px, -60px) scale(1.12); }
++}
++
++/* --- Light sweep across primary CTAs on hover --- */
++.pill-cta,
++.pill-cta-inverted {
++  position: relative;
++  overflow: hidden;
++  isolation: isolate;
++}
++.pill-cta::before,
++.pill-cta-inverted::before {
++  content: '';
++  position: absolute;
++  inset: 0;
++  z-index: 1;
++  pointer-events: none;
++  background: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, 0.5) 50%, transparent 58%);
++  transform: translateX(-130%);
++  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
++}
++.pill-cta:hover::before,
++.pill-cta-inverted:hover::before {
++  transform: translateX(130%);
++}
++
++/* --- Generic scroll reveal (used by the Reveal component) --- */
++.reveal {
++  opacity: 0;
++  transform: translateY(30px);
++  transition:
++    opacity 0.7s ease,
++    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
++  will-change: opacity, transform;
++}
++.reveal-visible {
++  opacity: 1;
++  transform: translateY(0);
++}
++
++/* Fallback when backdrop-filter is unavailable: keep translucency readable */
++@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
++  .glass { background: rgba(255, 255, 255, 0.88); }
++  .glass-dark { background: rgba(6, 78, 59, 0.72); }
++  .glass-nav { background: rgba(255, 255, 255, 0.94); }
++}
+diff --git a/src/components/Navbar.jsx b/src/components/Navbar.jsx
+--- a/src/components/Navbar.jsx
++++ b/src/components/Navbar.jsx
+@@ -43,9 +43,7 @@
+   return (
+     <header
+       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+-        isScrolled
+-          ? 'bg-white/90 backdrop-blur-md shadow-[0_2px_20px_rgba(6,78,59,0.06)]'
+-          : ''
++        isScrolled ? 'glass-nav' : ''
+       }`}
+     >
+       {/* Launch offer announcement bar */}
+diff --git a/src/components/Hero.jsx b/src/components/Hero.jsx
+--- a/src/components/Hero.jsx
++++ b/src/components/Hero.jsx
+@@ -1,5 +1,6 @@
+ import { useEffect, useRef } from 'react';
+ import gsap from 'gsap';
++import Orbs from './Orbs';
+ 
+ export default function Hero({
+   headline = "Scaled.",
+@@ -11,6 +12,7 @@
+   const containerRef = useRef(null);
+   const headlineRef = useRef(null);
+   const subtitleRef = useRef(null);
++  const orbsRef = useRef(null);
+ 
+   useEffect(() => {
+     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+@@ -66,6 +68,30 @@
+     return () => ctx.revert();
+   }, [headline]);
+ 
++  // Subtle scroll parallax on the orbs backdrop (transform only, rAF-throttled)
++  useEffect(() => {
++    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
++    if (prefersReducedMotion) return;
++
++    let rafId = null;
++    const onScroll = () => {
++      if (rafId) return;
++      rafId = requestAnimationFrame(() => {
++        rafId = null;
++        const el = orbsRef.current;
++        if (!el) return;
++        const y = Math.min(window.scrollY, window.innerHeight);
++        el.style.transform = `translate3d(0, ${y * 0.14}px, 0)`;
++      });
++    };
++
++    window.addEventListener('scroll', onScroll, { passive: true });
++    return () => {
++      window.removeEventListener('scroll', onScroll);
++      if (rafId) cancelAnimationFrame(rafId);
++    };
++  }, []);
++
+   const lastWordStart = headline.lastIndexOf(' ') + 1;
+ 
+   return (
+@@ -73,29 +99,9 @@
+       ref={containerRef}
+       className="relative w-full min-h-[75vh] md:min-h-[85vh] flex flex-col justify-end pt-36 pb-16 md:pb-24 px-6 md:px-12 max-w-[1600px] mx-auto bg-white overflow-hidden"
+     >
+-      {/* Layered emerald gradient backdrop (brand colours) */}
+-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+-        <div
+-          className="absolute -top-40 right-[-10%] w-[600px] h-[600px] rounded-full"
+-          style={{
+-            background:
+-              'radial-gradient(circle, rgba(16,185,129,0.22) 0%, rgba(16,185,129,0) 65%)'
+-          }}
+-        />
+-        <div
+-          className="absolute bottom-[-25%] left-[-8%] w-[540px] h-[540px] rounded-full"
+-          style={{
+-            background:
+-              'radial-gradient(circle, rgba(167,243,208,0.4) 0%, rgba(167,243,208,0) 68%)'
+-          }}
+-        />
+-        <div
+-          className="absolute top-1/3 left-1/4 w-[440px] h-[440px] rounded-full"
+-          style={{
+-            background:
+-              'radial-gradient(circle, rgba(240,253,244,0.95) 0%, rgba(240,253,244,0) 70%)'
+-          }}
+-        />
++      {/* Animated liquid gradient orbs backdrop (brand colours) */}
++      <div ref={orbsRef} className="absolute inset-0 will-change-transform">
++        <Orbs />
+       </div>
+ 
+       <div className="w-full relative z-10">
+@@ -148,7 +154,7 @@
+             ].map((fact) => (
+               <span
+                 key={fact}
+-                className="inline-flex items-center gap-2 text-sm font-semibold tracking-tight text-[#064E3B]/75"
++                className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold tracking-tight text-[#064E3B]/80"
+               >
+                 <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
+                 {fact}
+diff --git a/src/components/HomeServices.jsx b/src/components/HomeServices.jsx
+--- a/src/components/HomeServices.jsx
++++ b/src/components/HomeServices.jsx
+@@ -1,4 +1,6 @@
+ import { Link } from 'react-router-dom';
++import Reveal from './Reveal';
++import GlassCard from './Glass';
+ 
+ export default function HomeServices() {
+   const services = [
+@@ -71,10 +73,11 @@
+         {services.map((service, index) => {
+           const isDark = service.color.includes('text-white');
+           return (
+-            <div
+-              key={index}
+-              className={`p-8 sm:p-10 md:p-12 rounded-[28px] md:rounded-[36px] ${service.color} flex flex-col justify-between min-h-[380px] card-soft-shadow transition-all duration-300 hover:-translate-y-1.5 hover:ring-2 hover:ring-[#10B981]/50`}
+-            >
++            <Reveal key={index} delay={(index % 2) * 90}>
++              <GlassCard
++                variant="edge"
++                className={`p-8 sm:p-10 md:p-12 rounded-[28px] md:rounded-[36px] ${service.color} flex flex-col justify-between min-h-[380px] card-soft-shadow transition-all duration-300 hover:ring-2 hover:ring-[#10B981]/50`}
++              >
+               <div>
+                 <div className="flex items-center justify-between gap-4 mb-6">
+                   <span
+@@ -135,7 +138,8 @@
+                   {service.linkText} &rarr;
+                 </Link>
+               </div>
+-            </div>
++              </GlassCard>
++            </Reveal>
+           );
+         })}
+       </div>
+diff --git a/src/components/Services.jsx b/src/components/Services.jsx
+--- a/src/components/Services.jsx
++++ b/src/components/Services.jsx
+@@ -1,6 +1,7 @@
+ import { useEffect, useRef } from 'react';
+ import { Link } from 'react-router-dom';
+ import SEO from './SEO';
++import GlassCard from './Glass';
+ 
+ export default function Services() {
+   const containerRef = useRef(null);
+@@ -102,8 +103,9 @@
+               key={index}
+               className="reveal-service-card opacity-0 translate-y-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [&.is-revealed]:opacity-100 [&.is-revealed]:translate-y-0"
+             >
+-              <div
+-                className={`p-8 sm:p-12 md:p-16 rounded-[28px] md:rounded-[36px] ${service.color} flex flex-col justify-between min-h-[420px] card-soft-shadow transition-all duration-300 hover:-translate-y-1.5 hover:ring-2 hover:ring-[#10B981]/50`}
++              <GlassCard
++                variant="edge"
++                className={`p-8 sm:p-12 md:p-16 rounded-[28px] md:rounded-[36px] ${service.color} flex flex-col justify-between min-h-[420px] card-soft-shadow transition-all duration-300 hover:ring-2 hover:ring-[#10B981]/50`}
+               >
+                 <div className="flex flex-col gap-6 max-w-4xl">
+                   <span
+@@ -166,7 +168,7 @@
+                     </Link>
+                   </div>
+                 </div>
+-              </div>
++              </GlassCard>
+             </div>
+           );
+         })}
+diff --git a/src/components/Pricing.jsx b/src/components/Pricing.jsx
+--- a/src/components/Pricing.jsx
++++ b/src/components/Pricing.jsx
+@@ -2,6 +2,7 @@
+ import { Link } from 'react-router-dom';
+ import { Check, Clock } from 'lucide-react';
+ import SEO from './SEO';
++import GlassCard from './Glass';
+ 
+ /**
+  * Package prices live in this one array — edit prices here only.
+@@ -146,11 +147,13 @@
+                 key={index}
+                 className="reveal-price-card opacity-0 translate-y-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [&.is-revealed]:opacity-100 [&.is-revealed]:translate-y-0 flex"
+               >
+-                <div
+-                  className={`w-full p-8 sm:p-10 md:p-12 rounded-[28px] md:rounded-[36px] flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 ${
++                <GlassCard
++                  variant={isFeatured ? 'edge' : 'full'}
++                  tilt={!isFeatured}
++                  className={`w-full p-8 sm:p-10 md:p-12 rounded-[28px] md:rounded-[36px] flex flex-col justify-between transition-all duration-300 ${
+                     isFeatured
+                       ? 'bg-gradient-to-br from-[#064E3B] via-[#065F46] to-[#0A7A5C] text-white ring-4 ring-[#10B981]/25 shadow-[0_36px_80px_-24px_rgba(6,78,59,0.55)] lg:scale-[1.03]'
+-                      : 'bg-white text-[#064E3B] border border-[#A7F3D0]/80 card-soft-shadow hover:ring-2 hover:ring-[#10B981]/40'
++                      : 'text-[#064E3B] card-soft-shadow hover:ring-2 hover:ring-[#10B981]/40'
+                   }`}
+                 >
+                   <div>
+@@ -271,7 +274,7 @@
+                       Get a proposal
+                     </Link>
+                   </div>
+-                </div>
++                </GlassCard>
+               </div>
+             );
+           })}
+diff --git a/src/components/FooterCTA.jsx b/src/components/FooterCTA.jsx
+--- a/src/components/FooterCTA.jsx
++++ b/src/components/FooterCTA.jsx
+@@ -1,5 +1,6 @@
+ import { useEffect, useRef } from 'react';
+ import { Link } from 'react-router-dom';
++import GlassCard from './Glass';
+ 
+ export default function FooterCTA() {
+   const containerRef = useRef(null);
+@@ -40,9 +41,10 @@
+       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+         {/* Card 1: About Us */}
+         <div className="reveal-cta-card opacity-0 translate-y-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [&.is-revealed]:opacity-100 [&.is-revealed]:translate-y-0">
++          <GlassCard variant="edge" className="rounded-[24px] md:rounded-[32px] h-full">
+           <Link
+             to="/why-prismbee"
+-            className="group flex flex-col justify-between p-8 sm:p-12 md:p-16 rounded-[24px] md:rounded-[32px] bg-gradient-to-br from-[#064E3B] via-[#065F46] to-[#10B981] text-white min-h-[380px] md:min-h-[460px] glow-emerald transition-all duration-300 hover:-translate-y-1.5"
++            className="group flex flex-col justify-between p-8 sm:p-12 md:p-16 rounded-[24px] md:rounded-[32px] bg-gradient-to-br from-[#064E3B] via-[#065F46] to-[#10B981] text-white min-h-[380px] md:min-h-[460px] glow-emerald transition-all duration-300"
+           >
+             <div className="flex flex-col gap-6">
+               <span className="text-[#A7F3D0] font-bold text-lg md:text-xl tracking-tight">
+@@ -59,13 +61,15 @@
+               </span>
+             </div>
+           </Link>
++          </GlassCard>
+         </div>
+ 
+         {/* Card 2: Contact */}
+         <div className="reveal-cta-card opacity-0 translate-y-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [&.is-revealed]:opacity-100 [&.is-revealed]:translate-y-0">
++          <GlassCard variant="edge" className="rounded-[24px] md:rounded-[32px] h-full">
+           <Link
+             to="/contact"
+-            className="group flex flex-col justify-between p-8 sm:p-12 md:p-16 rounded-[24px] md:rounded-[32px] bg-gradient-to-br from-[#F0FDF4] via-[#F0FDF4] to-white text-[#064E3B] border border-[#A7F3D0]/60 min-h-[380px] md:min-h-[460px] card-soft-shadow transition-all duration-300 hover:-translate-y-1.5 hover:ring-2 hover:ring-[#10B981]/40"
++            className="group flex flex-col justify-between p-8 sm:p-12 md:p-16 rounded-[24px] md:rounded-[32px] bg-gradient-to-br from-[#F0FDF4] via-[#F0FDF4] to-white text-[#064E3B] border border-[#A7F3D0]/60 min-h-[380px] md:min-h-[460px] card-soft-shadow transition-all duration-300 hover:ring-2 hover:ring-[#10B981]/40"
+           >
+             <div className="flex flex-col gap-6">
+               <span className="text-[#064E3B]/70 font-bold text-lg md:text-xl tracking-tight">
+@@ -82,6 +86,7 @@
+               </span>
+             </div>
+           </Link>
++          </GlassCard>
+         </div>
+       </div>
+     </section>
+diff --git a/src/components/Footer.jsx b/src/components/Footer.jsx
+--- a/src/components/Footer.jsx
++++ b/src/components/Footer.jsx
+@@ -1,5 +1,7 @@
+ import { useState } from 'react';
+ import { Link } from 'react-router-dom';
++import GlassCard from './Glass';
++import Orbs from './Orbs';
+ 
+ export default function Footer() {
+   const [email, setEmail] = useState('');
+@@ -13,8 +15,9 @@
+   };
+ 
+   return (
+-    <footer className="w-full bg-[#064E3B] text-white pt-20 md:pt-32 pb-10 px-6 md:px-12">
+-      <div className="max-w-[1600px] mx-auto flex flex-col gap-16 md:gap-24">
++    <footer className="relative overflow-hidden w-full bg-[#064E3B] text-white pt-20 md:pt-32 pb-10 px-6 md:px-12">
++      <Orbs tone="dark" />
++      <div className="relative max-w-[1600px] mx-auto flex flex-col gap-16 md:gap-24">
+         {/* Middle Section: 2 Columns (Left: Nav, Right: Newsletter & Social) */}
+         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start">
+           {/* Left: Nav Pages with Period Suffixes */}
+@@ -91,7 +94,8 @@
+           </div>
+ 
+           {/* Right: Newsletter (Get Prismbee in your DMs) */}
+-          <div className="md:col-span-7 lg:col-span-6 flex flex-col gap-6 md:pl-8 lg:pl-16">
++          <div className="md:col-span-7 lg:col-span-6 md:pl-8 lg:pl-16">
++            <GlassCard variant="dark" className="rounded-[28px] p-8 md:p-10 flex flex-col gap-6">
+             <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
+               Get Prismbee in your DMs.
+             </h3>
+@@ -123,6 +127,7 @@
+                 </p>
+               </form>
+             )}
++            </GlassCard>
+           </div>
+         </div>
+ 
+diff --git a/src/components/Glass.jsx b/src/components/Glass.jsx
+new file mode 100644
+--- a/src/components/Glass.jsx
++++ b/src/components/Glass.jsx
+@@ -0,0 +1,88 @@
++import { useRef, useCallback } from 'react';
++
++/**
++ * Liquid-glass helpers.
++ *
++ * GlassCard wraps any panel/card and adds:
++ *  - cursor-following specular sheen (via --sheen-x / --sheen-y CSS vars)
++ *  - subtle 3D tilt on hover (pointer: fine devices only)
++ *
++ * Variants:
++ *  - "full": frosted translucent panel (nav, pills, footer panel)
++ *  - "dark": frosted dark translucent panel (footer panel)
++ *  - "edge": keeps the card's own background, adds glass edge border,
++ *            inner highlight and sheen on top (service/package/CTA cards)
++ *
++ * Motion is skipped on touch devices and when the user prefers reduced
++ * motion. No animation libraries needed, vanilla pointer events + CSS.
++ */
++
++function motionAllowed() {
++  if (typeof window === 'undefined') return false;
++  return (
++    window.matchMedia('(pointer: fine)').matches &&
++    !window.matchMedia('(prefers-reduced-motion: reduce)').matches
++  );
++}
++
++export function useSheen() {
++  const ref = useRef(null);
++
++  const onPointerMove = useCallback((e) => {
++    const el = ref.current;
++    if (!el || !motionAllowed()) return;
++    const rect = el.getBoundingClientRect();
++    const x = ((e.clientX - rect.left) / rect.width) * 100;
++    const y = ((e.clientY - rect.top) / rect.height) * 100;
++    el.style.setProperty('--sheen-x', `${x.toFixed(1)}%`);
++    el.style.setProperty('--sheen-y', `${y.toFixed(1)}%`);
++    const rotateX = ((y - 50) / 50) * -4;
++    const rotateY = ((x - 50) / 50) * 4;
++    el.classList.add('glass-tilting');
++    el.style.transform = `perspective(900px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
++  }, []);
++
++  const onPointerLeave = useCallback(() => {
++    const el = ref.current;
++    if (!el) return;
++    el.style.transform = '';
++    // keep the class briefly so the snap-back is eased, then drop it
++    window.setTimeout(() => {
++      if (el.style.transform === '') el.classList.remove('glass-tilting');
++    }, 160);
++  }, []);
++
++  return { ref, onPointerMove, onPointerLeave };
++}
++
++const VARIANT_CLASS = {
++  full: 'glass',
++  dark: 'glass-dark',
++  edge: 'glass-edge'
++};
++
++export default function GlassCard({
++  children,
++  className = '',
++  variant = 'edge',
++  sheen = true,
++  tilt = true,
++  ...rest
++}) {
++  const { ref, onPointerMove, onPointerLeave } = useSheen();
++  const interactive = sheen || tilt;
++
++  return (
++    <div
++      ref={ref}
++      onPointerMove={interactive ? onPointerMove : undefined}
++      onPointerLeave={interactive ? onPointerLeave : undefined}
++      className={`${VARIANT_CLASS[variant] || VARIANT_CLASS.edge} ${
++        sheen ? 'glass-sheen' : ''
++      } ${className}`}
++      {...rest}
++    >
++      {children}
++    </div>
++  );
++}
+diff --git a/src/components/Reveal.jsx b/src/components/Reveal.jsx
+new file mode 100644
+--- a/src/components/Reveal.jsx
++++ b/src/components/Reveal.jsx
+@@ -0,0 +1,43 @@
++import { useEffect, useRef } from 'react';
++
++/**
++ * Reveal: generic scroll-entrance wrapper (fade + slide up).
++ * Adds .reveal-visible via IntersectionObserver once the element
++ * enters the viewport. Respects prefers-reduced-motion.
++ *
++ * Props: delay (ms stagger), className, as (element tag, default div)
++ */
++export default function Reveal({ children, className = '', delay = 0, as: Tag = 'div' }) {
++  const ref = useRef(null);
++
++  useEffect(() => {
++    const el = ref.current;
++    if (!el) return;
++
++    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
++      el.classList.add('reveal-visible');
++      return;
++    }
++
++    const observer = new IntersectionObserver(
++      (entries) => {
++        entries.forEach((entry) => {
++          if (entry.isIntersecting) {
++            el.classList.add('reveal-visible');
++            observer.disconnect();
++          }
++        });
++      },
++      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
++    );
++
++    observer.observe(el);
++    return () => observer.disconnect();
++  }, []);
++
++  return (
++    <Tag ref={ref} className={`reveal ${className}`} style={{ transitionDelay: `${delay}ms` }}>
++      {children}
++    </Tag>
++  );
++}
+diff --git a/src/components/Orbs.jsx b/src/components/Orbs.jsx
+new file mode 100644
+--- a/src/components/Orbs.jsx
++++ b/src/components/Orbs.jsx
+@@ -0,0 +1,20 @@
++/**
++ * Orbs: animated floating gradient blobs for section backdrops.
++ * Pure CSS animation (see .orb classes in index.css); the global
++ * prefers-reduced-motion rule freezes them automatically.
++ *
++ * tone="light" (default): emerald/mint glows for light sections
++ * tone="dark": emerald glows tuned for dark sections (footer)
++ */
++export default function Orbs({ className = '', tone = 'light' }) {
++  return (
++    <div
++      aria-hidden="true"
++      className={`pointer-events-none absolute inset-0 overflow-hidden ${tone === 'dark' ? 'orb-tone-dark' : ''} ${className}`}
++    >
++      <span className="orb orb-a" />
++      <span className="orb orb-b" />
++      <span className="orb orb-c" />
++    </div>
++  );
++}
