@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import GlassCard from './Glass';
+import Orbs from './Orbs';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -13,8 +15,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-[#064E3B] text-white pt-20 md:pt-32 pb-10 px-6 md:px-12">
-      <div className="max-w-[1600px] mx-auto flex flex-col gap-16 md:gap-24">
+    <footer className="relative overflow-hidden w-full bg-[#064E3B] text-white pt-20 md:pt-32 pb-10 px-6 md:px-12">
+      <Orbs tone="dark" />
+      <div className="relative max-w-[1600px] mx-auto flex flex-col gap-16 md:gap-24">
         {/* Middle Section: 2 Columns (Left: Nav, Right: Newsletter & Social) */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start">
           {/* Left: Nav Pages with Period Suffixes */}
@@ -91,7 +94,8 @@ export default function Footer() {
           </div>
 
           {/* Right: Newsletter (Get Prismbee in your DMs) */}
-          <div className="md:col-span-7 lg:col-span-6 flex flex-col gap-6 md:pl-8 lg:pl-16">
+          <div className="md:col-span-7 lg:col-span-6 md:pl-8 lg:pl-16">
+            <GlassCard variant="dark" className="rounded-[28px] p-8 md:p-10 flex flex-col gap-6">
             <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
               Get Prismbee in your DMs.
             </h3>
@@ -123,6 +127,7 @@ export default function Footer() {
                 </p>
               </form>
             )}
+            </GlassCard>
           </div>
         </div>
 

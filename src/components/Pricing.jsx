@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Check, Clock } from 'lucide-react';
 import SEO from './SEO';
+import GlassCard from './Glass';
 
 /**
  * Package prices live in this one array — edit prices here only.
@@ -146,11 +147,13 @@ export default function Pricing() {
                 key={index}
                 className="reveal-price-card opacity-0 translate-y-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [&.is-revealed]:opacity-100 [&.is-revealed]:translate-y-0 flex"
               >
-                <div
-                  className={`w-full p-8 sm:p-10 md:p-12 rounded-[28px] md:rounded-[36px] flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 ${
+                <GlassCard
+                  variant={isFeatured ? 'edge' : 'full'}
+                  tilt={!isFeatured}
+                  className={`w-full p-8 sm:p-10 md:p-12 rounded-[28px] md:rounded-[36px] flex flex-col justify-between transition-all duration-300 ${
                     isFeatured
                       ? 'bg-gradient-to-br from-[#064E3B] via-[#065F46] to-[#0A7A5C] text-white ring-4 ring-[#10B981]/25 shadow-[0_36px_80px_-24px_rgba(6,78,59,0.55)] lg:scale-[1.03]'
-                      : 'bg-white text-[#064E3B] border border-[#A7F3D0]/80 card-soft-shadow hover:ring-2 hover:ring-[#10B981]/40'
+                      : 'text-[#064E3B] card-soft-shadow hover:ring-2 hover:ring-[#10B981]/40'
                   }`}
                 >
                   <div>
@@ -271,7 +274,7 @@ export default function Pricing() {
                       Get a proposal
                     </Link>
                   </div>
-                </div>
+                </GlassCard>
               </div>
             );
           })}

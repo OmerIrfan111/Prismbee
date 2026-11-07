@@ -43,9 +43,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/90 backdrop-blur-md shadow-[0_2px_20px_rgba(6,78,59,0.06)]'
-          : ''
+        isScrolled ? 'glass-nav' : ''
       }`}
     >
       {/* Launch offer announcement bar */}

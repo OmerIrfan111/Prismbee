@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import Orbs from './Orbs';
 
 export default function Hero({
   headline = "Scaled.",
@@ -11,6 +12,7 @@ export default function Hero({
   const containerRef = useRef(null);
   const headlineRef = useRef(null);
   const subtitleRef = useRef(null);
+  const orbsRef = useRef(null);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -66,6 +68,30 @@ export default function Hero({
     return () => ctx.revert();
   }, [headline]);
 
+  // Subtle scroll parallax on the orbs backdrop (transform only, rAF-throttled)
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    let rafId = null;
+    const onScroll = () => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        const el = orbsRef.current;
+        if (!el) return;
+        const y = Math.min(window.scrollY, window.innerHeight);
+        el.style.transform = `translate3d(0, ${y * 0.14}px, 0)`;
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, []);
+
   const lastWordStart = headline.lastIndexOf(' ') + 1;
 
   return (
@@ -73,29 +99,9 @@ export default function Hero({
       ref={containerRef}
       className="relative w-full min-h-[75vh] md:min-h-[85vh] flex flex-col justify-end pt-36 pb-16 md:pb-24 px-6 md:px-12 max-w-[1600px] mx-auto bg-white overflow-hidden"
     >
-      {/* Layered emerald gradient backdrop (brand colours) */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div
-          className="absolute -top-40 right-[-10%] w-[600px] h-[600px] rounded-full"
-          style={{
-            background:
-              'radial-gradient(circle, rgba(16,185,129,0.22) 0%, rgba(16,185,129,0) 65%)'
-          }}
-        />
-        <div
-          className="absolute bottom-[-25%] left-[-8%] w-[540px] h-[540px] rounded-full"
-          style={{
-            background:
-              'radial-gradient(circle, rgba(167,243,208,0.4) 0%, rgba(167,243,208,0) 68%)'
-          }}
-        />
-        <div
-          className="absolute top-1/3 left-1/4 w-[440px] h-[440px] rounded-full"
-          style={{
-            background:
-              'radial-gradient(circle, rgba(240,253,244,0.95) 0%, rgba(240,253,244,0) 70%)'
-          }}
-        />
+      {/* Animated liquid gradient orbs backdrop (brand colours) */}
+      <div ref={orbsRef} className="absolute inset-0 will-change-transform">
+        <Orbs />
       </div>
 
       <div className="w-full relative z-10">
@@ -148,7 +154,7 @@ export default function Hero({
             ].map((fact) => (
               <span
                 key={fact}
-                className="inline-flex items-center gap-2 text-sm font-semibold tracking-tight text-[#064E3B]/75"
+                className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold tracking-tight text-[#064E3B]/80"
               >
                 <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
                 {fact}
